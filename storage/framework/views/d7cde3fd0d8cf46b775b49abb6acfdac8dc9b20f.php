@@ -24,7 +24,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
-                            <table class="display" id="responsive">
+                            <table class="table-striped display table-bordered" id="responsive">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -39,7 +39,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $__empty_1 = true; $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                         <tr>
                                             <td><?php echo e($loop->iteration); ?></td>
                                             <td><img style="max-width: 100px;max-height: 100px;" src="<?php echo e($user->getFirstMediaUrl('user') != null ?  $user->getFirstMediaUrl('user') : asset('assets/images/dashboard/1.png')); ?>"></td>
@@ -74,7 +74,9 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -86,7 +88,6 @@
 
 
     <?php $__env->startPush('scripts'); ?>
-        <script src="<?php echo e(asset('assets/js/datatable/datatables/jquery.dataTables.min.js')); ?>"></script>
         <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/custom.js')); ?>"></script>
         <script src="<?php echo e(asset('assets/js/prism/prism.min.js')); ?>"></script>
     <?php $__env->stopPush(); ?>

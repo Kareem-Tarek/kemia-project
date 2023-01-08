@@ -31,50 +31,52 @@
                             <li class="nav-item"><a class="nav-link @if(LaravelLocalization::getCurrentLocale() == 'en') active  @endif" id="en-tab" data-bs-toggle="pill" href="#en" role="tab" aria-controls="en" aria-selected="@if(LaravelLocalization::getCurrentLocale() == 'ar') true @else false @endif">{{__('master.english')}}</a></li>
                         </ul>
                         
-                        <form class="needs-validation" novalidate="" method="post" action="{{ route('categories.store') }}"
-                            enctype="multipart/form-data">
-                            @csrf
+                            <form class="needs-validation" novalidate="" id="alert-form" method="post" action="{{ route('categories.store') }}"
+                                enctype="multipart/form-data">
+                                @csrf
 
-                            <div class="tab-pane fade mt-4 @if(LaravelLocalization::getCurrentLocale() == 'en') show active @endif" id="en" role="tabpanel" aria-labelledby="en-tab">
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade mt-4 @if(LaravelLocalization::getCurrentLocale() == 'en') show active @endif" id="en" role="tabpanel" aria-labelledby="en-tab">
+                                        <div class="row g-1">
+                                            <div class="col-md-12 mb-3">
+                                                <label class="form-label" for="validationCustom01">{{ __('category.name') }} <span class="text-danger">*</span></label>
+                                                <input class="form-control" id="validationCustom01" type="text" required=""
+                                                    name="name_en" placeholder="ex: ELECTRONICS" value="{{ old('name_en') }}" />
+                                                <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                                <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade mt-4 @if(LaravelLocalization::getCurrentLocale() == 'ar') show active @endif" id="ar" role="tabpanel" aria-labelledby="ar-tab">
+                                        <div class="row g-1">
+                                            <div class="col-md-12 mb-3">
+                                                <label class="form-label" for="validationCustom01">{{ __('category.name') }} <span class="text-danger">*</span></label>
+                                                <input class="form-control" id="validationCustom01" type="text" required=""
+                                                    name="name_ar" placeholder="مثل: إلكترونيات" value="{{ old('name_ar') }}" />
+                                                <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                                <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="row g-1">
                                     <div class="col-md-12 mb-3">
-                                        <label class="form-label" for="validationCustom01">{{ __('category.name') }} <span class="text-danger">*</span></label>
-                                        <input class="form-control" id="validationCustom01" type="text" required=""
-                                            name="name_en" placeholder="ex: ELECTRONICS" value="{{ old('name_en') }}" />
+                                        <label class="form-label">{{ __('category.sub_category_of') }}</label>
+                                            <select name="parent_id" class="form-control" value="{{ old('parent_id') }}">
+                                                <option value="" selected>No sub-category selected.</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
+                                            </select>
                                         <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                         <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="tab-pane fade mt-4 @if(LaravelLocalization::getCurrentLocale() == 'ar') show active @endif" id="ar" role="tabpanel" aria-labelledby="ar-tab">
-                                <div class="row g-1">
-                                    <div class="col-md-12 mb-3">
-                                        <label class="form-label" for="validationCustom01">{{ __('category.name') }} <span class="text-danger">*</span></label>
-                                        <input class="form-control" id="validationCustom01" type="text" required=""
-                                            name="name_ar" placeholder="مثل: إلكترونيات" value="{{ old('name_ar') }}" />
-                                        <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
-                                        <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label">{{ __('category.sub_category_of') }}</label>
-                                        <select name="parent_id" class="form-control" value="{{ old('parent_id') }}">
-                                            <option value="" selected>No sub-category selected.</option>
-                                            @foreach($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
-                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
-                                </div>
-                            </div>
-
-                            <button class="btn btn-primary" type="submit">{{ __('master.save') }}</button>
-                        </form>
+                                <button class="btn btn-primary" type="submit">{{ __('master.save') }}</button>
+                            </form>
                     </div>
                 </div>
 

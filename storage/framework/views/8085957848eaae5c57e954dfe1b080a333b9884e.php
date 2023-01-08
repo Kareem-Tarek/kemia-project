@@ -5,9 +5,7 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startPush('css'); ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/bootstrap.css')); ?>">
-<?php $__env->stopPush(); ?>
+
 
 <?php $__env->startSection('content'); ?>
     <?php $__env->startComponent('components.breadcrumb'); ?>
@@ -26,8 +24,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
 
-                            <table class="table-striped display table-bordered" id="responsive">
-
+                            <table class="table-striped display table-bordered <?php if($all_products->count() == 0): ?> d-none <?php endif; ?>   " id="responsive">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -45,7 +42,7 @@
                                 </thead>
 
                                 <tbody>
-                                    <?php $__currentLoopData = $all_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $__empty_1 = true; $__currentLoopData = $all_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                         <tr>
                                             <td><?php echo e($loop->iteration); ?></td>
                                             <td><img src="<?php echo e($product->image); ?>" alt="<?php echo e($product->title.'.img'); ?>" width="100"></td>
@@ -114,7 +111,11 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                            <div class="alert alert-secondary font-weight-bold text-center h5">No Products Yet <a href="<?php echo e(route('products.create')); ?>" class="text-decoration-underline text-dark">Please add product</a> and come back</div>
+                                    <?php endif; ?>
+
                                 </tbody>
                             </table>
                         </div>

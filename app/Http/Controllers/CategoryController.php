@@ -65,7 +65,7 @@ class CategoryController extends Controller
 
         // return redirect()->route('categories.index')
         // ->with(['category_created' => "($request->name) is created successfully!"]);
-        return redirect()->back()
+        return redirect()->route('categories.index')
             ->with('success', __('master.messages_add'));
     }
     /**
@@ -99,11 +99,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category_old_name = Category::find($id)->name;
-        $categories = Category::findOrFail($id);
-        $categories->name = $request->name;
-        $categories->parent_id = $request->parent_id;
-        $categories->save();
+        // $category_old_name = Category::find($id)->name;
+        $category = Category::findOrFail($id);
+        $category->setTranslation('name', 'en', $request->name_en)
+            ->setTranslation('name', 'ar', $request->name_ar);
+        $category->parent_id = $request->parent_id;
+        $category->save();
         
         // return view('dashboard.categories.index',compact('categories'))
         // ->with(['category_updated' => "The category name ($category_old_name) has been changed to "."($request->name)"." !"]);

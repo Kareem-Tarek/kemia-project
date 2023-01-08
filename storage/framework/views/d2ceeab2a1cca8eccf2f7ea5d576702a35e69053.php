@@ -25,11 +25,16 @@
         rel="stylesheet">
     <!-- Font Awesome-->
     <?php if ($__env->exists('layouts.admin.partials.css')) echo $__env->make('layouts.admin.partials.css', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<<<<<<< Updated upstream
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" 
+=======
+    <link
+        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"
+>>>>>>> Stashed changes
         rel="stylesheet">
 </head>
 
-<body class="<?php echo e(App::getLocale() == 'ar' ? 'rtl' : 'ltr'); ?>">
+<body class="dark-only <?php echo e(App::getLocale() == 'ar' ? 'rtl' : 'ltr'); ?>">
     <!-- Loader starts-->
     <div class="loader-wrapper">
         <div class="theme-loader"></div>
@@ -55,12 +60,20 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="row">
+<<<<<<< Updated upstream
                         <div class="col-md-12 footer-copyright">
                             <p class="mb-0">Copyright 2022-2023 © by 
                                 <a href="http://wa.me/+201065858355">Baraa Samy</a> <i class="fa-brands fa-whatsapp"></i> &nbsp;—&nbsp; 
                                 <a href="http://wa.me/+201150100104">Mohamed Samy</a> <i class="fa-brands fa-whatsapp"></i> &nbsp;—&nbsp; 
                                 <a href="http://wa.me/+201010110457">Kareem Tarek</a> <i class="fa-brands fa-whatsapp"></i> &nbsp;—&nbsp;
                                 <a href="http://wa.me/+201112554996">Ahmed Khalifa</a> <i class="fa-brands fa-whatsapp"></i>
+=======
+                        <div class="col-md-6 footer-copyright">
+                            <p class="mb-0">Copyright 2022-2023 © by
+                                <a href="http://wa.me/01150100104">Mohamed Samy</a>,
+                                <a href="http://wa.me/01010110457">Kareem Tarek</a> &
+                                <a href="http://wa.me/01112554996">Ahmed Khalifa</a>
+>>>>>>> Stashed changes
                             </p>
                         </div>
                         

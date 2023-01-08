@@ -152,5 +152,8 @@
         <script src="{{ asset('assets/js/prism/prism.min.js') }}"></script>
         <script src="{{ asset('assets/js/clipboard/clipboard.min.js') }}"></script>
         <script src="{{ asset('assets/js/custom-card/custom-card.js') }}"></script>
+        
+        <script src="{{asset('assets/js/bootstrap/popper.min.js')}}"></script>
+        <script src="{{asset('assets/js/bootstrap/bootstrap.min.js')}}"></script>
     @endpush
 @endsection

@@ -151,6 +151,9 @@
         <script src="<?php echo e(asset('assets/js/prism/prism.min.js')); ?>"></script>
         <script src="<?php echo e(asset('assets/js/clipboard/clipboard.min.js')); ?>"></script>
         <script src="<?php echo e(asset('assets/js/custom-card/custom-card.js')); ?>"></script>
+        
+        <script src="<?php echo e(asset('assets/js/bootstrap/popper.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/bootstrap/bootstrap.min.js')); ?>"></script>
     <?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>
 

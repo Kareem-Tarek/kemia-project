@@ -4,11 +4,9 @@
             <i data-feather="settings"></i>
         </a>
         <img class="img-90 rounded-circle"
-            src="
-                    <?php echo e(auth()->user()->getFirstMediaUrl('user') != null
+            src="<?php echo e(auth()->user()->getFirstMediaUrl('user') != null
                         ? auth()->user()->getFirstMediaUrl('user')
-                        : asset('assets/images/dashboard/1.png')); ?>"
-            alt="" />
+                        : asset('assets/images/dashboard/1.png')); ?>" alt="" />
         <div class="badge-bottom"><span class="badge badge-primary"><?php echo e(auth()->user()->roles_name); ?></span></div>
         <a href="user-profile">
             <h6 class="mt-3 f-14 f-w-600"><?php echo e(auth()->user()->name); ?></h6>
@@ -20,8 +18,7 @@
             <div id="mainnav">
                 <ul class="nav-menu custom-scrollbar">
                     <li class="back-btn">
-                        <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"
-                                aria-hidden="true"></i></div>
+                        <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                     </li>
                     <li class="sidebar-main-title">
                         <div class="text-center">
@@ -43,14 +40,9 @@
                                 <span><?php echo e(__('role.role')); ?></span>
                             </a>
                             <ul class="nav-submenu menu-content" style="display: <?php echo e(prefixBlock('roles')); ?>;">
-                                <li><a href="<?php echo e(route('roles.index')); ?>"
-                                        class="<?php echo e(routeActive('roles.index')); ?>"><?php echo e(__('role.role_list')); ?></a>
-                                </li>
+                                <li><a href="<?php echo e(route('roles.index')); ?>" class="<?php echo e(routeActive('roles.index')); ?>"><?php echo e(__('role.role_list')); ?></a></li>
                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role-create')): ?>
-                                    <li><a href="<?php echo e(route('roles.create')); ?>"
-                                            class="<?php echo e(routeActive('roles.create')); ?>"><?php echo e(__('role.add_role')); ?>
-
-                                        </a></li>
+                                    <li><a href="<?php echo e(route('roles.create')); ?>" class="<?php echo e(routeActive('roles.create')); ?>"><?php echo e(__('role.add_role')); ?></a></li>
                                 <?php endif; ?>
                             </ul>
                         </li>
@@ -83,14 +75,9 @@
                                 <span><?php echo e(__('category.category')); ?></span>
                             </a>
                             <ul class="nav-submenu menu-content" style="display: <?php echo e(prefixBlock('categories')); ?>;">
-                                <li><a href="<?php echo e(route('categories.index')); ?>"
-                                        class="<?php echo e(routeActive('categories.index')); ?>"><?php echo e(__('category.category_list')); ?></a>
-                                </li>
+                                <li><a href="<?php echo e(route('categories.index')); ?>" class="<?php echo e(routeActive('categories.index')); ?>"><?php echo e(__('category.category_list')); ?></a></li>
                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('category-create')): ?>
-                                    <li><a href="<?php echo e(route('categories.create')); ?>"
-                                            class="<?php echo e(routeActive('categories.create')); ?>"><?php echo e(__('category.add_category')); ?>
-
-                                        </a></li>
+                                    <li><a href="<?php echo e(route('categories.create')); ?>" class="<?php echo e(routeActive('categories.create')); ?>"><?php echo e(__('category.add_category')); ?></a></li>
                                 <?php endif; ?>
                             </ul>
                         </li>
@@ -103,14 +90,10 @@
                                 <span><?php echo e(__('product.product')); ?></span>
                             </a>
                             <ul class="nav-submenu menu-content" style="display: <?php echo e(prefixBlock('products')); ?>;">
-                                <li><a href="<?php echo e(route('products.index')); ?>"
-                                        class="<?php echo e(routeActive('products.index')); ?>"><?php echo e(__('product.product_list')); ?></a>
+                                <li><a href="<?php echo e(route('products.index')); ?>" class="<?php echo e(routeActive('products.index')); ?>"><?php echo e(__('product.product_list')); ?></a>
                                 </li>
                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('product-create')): ?>
-                                    <li><a href="<?php echo e(route('products.create')); ?>"
-                                            class="<?php echo e(routeActive('products.create')); ?>"><?php echo e(__('product.add_product')); ?>
-
-                                        </a></li>
+                                    <li><a href="<?php echo e(route('products.create')); ?>" class="<?php echo e(routeActive('products.create')); ?>"><?php echo e(__('product.add_product')); ?></a></li>
                                 <?php endif; ?>
                             </ul>
                         </li>

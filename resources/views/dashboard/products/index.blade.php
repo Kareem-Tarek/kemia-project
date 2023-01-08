@@ -48,7 +48,6 @@
                                         <th>{{ __('product.description') }}</th>
                                         <th>{{ __('product.meta_description') }}</th>
                                         <th>{{ __('product.product_category') }}</th>
-                                        <th>{{ __('product.product_sub_category') }}</th>
 
                                         <th>{{ __('master.processes') }}</th>
                                     </tr>
@@ -82,7 +81,6 @@
                                             <td>{{ Str::words($product->description, 7, '...') ?? __('master.null') }}</td>
                                             <td>{{ $product->meta_description ?? __('master.null') }}</td>
                                             <td>{{ $product->category->name ?? __('master.null') }}</td>
-                                            <td>{{ $product->category->parent_id ?? __('master.null') }}</td>
                                             <td>
                                                 <div style="display: flex;">
                                                     @can('product-edit')

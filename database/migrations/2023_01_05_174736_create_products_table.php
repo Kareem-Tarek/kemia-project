@@ -24,7 +24,6 @@ return new class extends Migration
             $table->decimal('discount')->nullable();
             $table->string('image');
             $table->string('category_id');
-            $table->string('sub_category')->nullable();
             $table->timestamps();
         });
     }

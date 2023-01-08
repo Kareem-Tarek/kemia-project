@@ -48,10 +48,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // $validator = Validator::make(
-        //     ['keywords' => 'nullable']
-        // );
-
         $pic_name = $request->file('image')->getClientOriginalName();
         
 
@@ -62,9 +58,8 @@ class ProductController extends Controller
         $product->description      = $request->description;
         $product->meta_description = $request->meta_description;
         $product->keywords         = $request->keywords;
-        $product->image            = '/assets/images/' . $pic_name;
+        $product->image            = '/assets/images/'.$pic_name;
         $product->category_id      = $request->category_id;
-        $product->sub_category     = $request->sub_category;
         $product->save();
 
         return redirect()->route('products.index')

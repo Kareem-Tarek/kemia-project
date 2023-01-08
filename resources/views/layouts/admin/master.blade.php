@@ -25,8 +25,7 @@
         rel="stylesheet">
     <!-- Font Awesome-->
     @includeIf('layouts.admin.partials.css')
-    <link 
-        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" 
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" 
         rel="stylesheet">
 </head>
 
@@ -56,17 +55,16 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-6 footer-copyright">
+                        <div class="col-md-12 footer-copyright">
                             <p class="mb-0">Copyright 2022-2023 © by 
-                                <a href="http://wa.me/01150100104">Mohamed Samy</a>, 
-                                <a href="http://wa.me/01010110457">Kareem Tarek</a> & 
-                                <a href="http://wa.me/01112554996">Ahmed Khalifa</a>
+                                <a href="http://wa.me/01150100104">Mohamed Samy</a> <i class="fa-brands fa-whatsapp"></i> &nbsp;—&nbsp; 
+                                <a href="http://wa.me/01010110457">Kareem Tarek</a> <i class="fa-brands fa-whatsapp"></i> &nbsp;—&nbsp;
+                                <a href="http://wa.me/01112554996">Ahmed Khalifa</a> <i class="fa-brands fa-whatsapp"></i>
                             </p>
                         </div>
-                        <div class="col-md-6">
-                            <p class="pull-right mb-0">Hand crafted & made with <i
-                                    class="fa fa-heart font-secondary"></i></p>
-                        </div>
+                        {{-- <div class="col-md-6">
+                            <p class="pull-right mb-0"></p>
+                        </div> --}}
                     </div>
                 </div>
             </footer>

@@ -3,6 +3,7 @@
 return  [
     'add_product'          => 'اضافة منتج',
     'product'              => 'المنتج',
+    'products'             => 'المنتجات',
     'product_list'         => 'قائمة المنتجات',
     'edit_product'         => 'تعديل المنتج',
     'image'                => 'الصورة',

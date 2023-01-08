@@ -103,6 +103,11 @@
 /**=====================
      01. General CSS Start
 ==========================**/
+.countable-data-dashboard-home{
+  font-weight: bold;
+  font-size: 150%;
+}
+
 .product-discount-index{
   font-weight: bold;
 }

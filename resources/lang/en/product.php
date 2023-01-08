@@ -3,6 +3,7 @@
 return  [
     'add_product'          => 'Add Product',
     'product'              => 'Product',
+    'products'             => 'Products',
     'product_list'         => 'Product List',
     'edit_product'         => 'Edit Product',
     'image'                => 'Image',

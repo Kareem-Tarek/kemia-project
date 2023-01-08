@@ -1,21 +1,21 @@
-@extends('layouts.admin.master')
 
-@section('title', 'Dashboard')
 
-@push('breadcrumb')
+<?php $__env->startSection('title', 'Dashboard'); ?>
+
+<?php $__env->startPush('breadcrumb'); ?>
     <li class="breadcrumb-item">Pages</li>
     <li class="breadcrumb-item active">Sample Page</li>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@push('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animate.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chartist.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/date-picker.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/prism.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vector-map.css') }}">
-@endpush
-@section('content')
-    @yield('breadcrumb-list')
+<?php $__env->startPush('css'); ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/animate.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/chartist.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/date-picker.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/prism.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vector-map.css')); ?>">
+<?php $__env->stopPush(); ?>
+<?php $__env->startSection('content'); ?>
+    <?php echo $__env->yieldContent('breadcrumb-list'); ?>
     <!-- Container-fluid starts-->
     <div class="container-fluid dashboard-default-sec">
         <div class="row">
@@ -26,10 +26,10 @@
                         <div class="card income-card card-secondary">
                             <div class="card-body text-center">
                                 <div class="round-box">
-                                    <span class="countable-data-dashboard-home">{{ \App\Models\Category::whereNull('parent_id')->count() ?? 0 }}</span>
+                                    <span class="countable-data-dashboard-home"><?php echo e(\App\Models\Category::whereNull('parent_id')->count() ?? 0); ?></span>
                                 </div>
-                                {{-- <h5>{{ $category }}</h5> --}}
-                                <p>{{ __('category.categories') }}</p>
+                                
+                                <p><?php echo e(__('category.categories')); ?></p>
                                 <div class="parrten">
                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -58,10 +58,10 @@
                         <div class="card income-card card-secondary">
                             <div class="card-body text-center">
                                 <div class="round-box">
-                                    <span class="countable-data-dashboard-home">{{ \App\Models\Category::whereNotNull('parent_id')->count() ?? 0 }}</span>
+                                    <span class="countable-data-dashboard-home"><?php echo e(\App\Models\Category::whereNotNull('parent_id')->count() ?? 0); ?></span>
                                 </div>
-                                {{-- <h5>{{ $sub_category }}</h5> --}}
-                                <p>{{ __('category.sub_categories') }}</p>
+                                
+                                <p><?php echo e(__('category.sub_categories')); ?></p>
                                 <div class="parrten">
                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -83,10 +83,10 @@
                         <div class="card income-card card-secondary">
                             <div class="card-body text-center">
                                 <div class="round-box">
-                                    <span class="countable-data-dashboard-home">{{ \App\Models\User::count() ?? 0 }}</span>
+                                    <span class="countable-data-dashboard-home"><?php echo e(\App\Models\User::count() ?? 0); ?></span>
                                 </div>
-                                {{-- <h5>{{ $vendor }}</h5> --}}
-                                <p>{{ __('user.user') }}</p>
+                                
+                                <p><?php echo e(__('user.user')); ?></p>
                                 <div class="parrten">
                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -108,10 +108,10 @@
                         <div class="card income-card card-secondary">
                             <div class="card-body text-center">
                                 <div class="round-box">
-                                    <span class="countable-data-dashboard-home">{{ \App\Models\Product::count() ?? 0 }}</span>
+                                    <span class="countable-data-dashboard-home"><?php echo e(\App\Models\Product::count() ?? 0); ?></span>
                                 </div>
-                                {{-- <h5>{{ $store }}</h5> --}}
-                                <p>{{ __('product.products') }}</p>
+                                
+                                <p><?php echo e(__('product.products')); ?></p>
                                 <div class="parrten">
                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -136,32 +136,34 @@
         </div>
     </div>
     <!-- Container-fluid Ends-->
-    @push('scripts')
-        <script src="{{ asset('assets/js/chart/chartist/chartist.js') }}"></script>
-        <script src="{{ asset('assets/js/chart/chartist/chartist-plugin-tooltip.js') }}"></script>
-        <script src="{{ asset('assets/js/chart/knob/knob.min.js') }}"></script>
-        <script src="{{ asset('assets/js/chart/knob/knob-chart.js') }}"></script>
-        <script src="{{ asset('assets/js/chart/apex-chart/apex-chart.js') }}"></script>
-        <script src="{{ asset('assets/js/chart/apex-chart/stock-prices.js') }}"></script>
-        <script src="{{ asset('assets/js/prism/prism.min.js') }}"></script>
-        <script src="{{ asset('assets/js/clipboard/clipboard.min.js') }}"></script>
-        <script src="{{ asset('assets/js/counter/jquery.waypoints.min.js') }}"></script>
-        <script src="{{ asset('assets/js/counter/jquery.counterup.min.js') }}"></script>
-        <script src="{{ asset('assets/js/counter/counter-custom.js') }}"></script>
-        <script src="{{ asset('assets/js/custom-card/custom-card.js') }}"></script>
-        <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
-        <script src="{{ asset('assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
-        <script src="{{ asset('assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js') }}"></script>
-        <script src="{{ asset('assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js') }}"></script>
-        <script src="{{ asset('assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js') }}"></script>
-        <script src="{{ asset('assets/js/vector-map/map/jquery-jvectormap-au-mill.js') }}"></script>
-        <script src="{{ asset('assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js') }}"></script>
-        <script src="{{ asset('assets/js/vector-map/map/jquery-jvectormap-in-mill.js') }}"></script>
-        <script src="{{ asset('assets/js/vector-map/map/jquery-jvectormap-asia-mill.js') }}"></script>
-        <script src="{{ asset('assets/js/dashboard/default.js') }}"></script>
-        <script src="{{ asset('assets/js/notify/index.js') }}"></script>
-        <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.js') }}"></script>
-        <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.en.js') }}"></script>
-        <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.custom.js') }}"></script>
-    @endpush
-@endsection
+    <?php $__env->startPush('scripts'); ?>
+        <script src="<?php echo e(asset('assets/js/chart/chartist/chartist.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/chart/chartist/chartist-plugin-tooltip.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/chart/knob/knob.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/chart/knob/knob-chart.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/chart/apex-chart/apex-chart.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/chart/apex-chart/stock-prices.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/prism/prism.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/clipboard/clipboard.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/counter/jquery.waypoints.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/counter/jquery.counterup.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/counter/counter-custom.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/custom-card/custom-card.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/notify/bootstrap-notify.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/vector-map/jquery-jvectormap-2.0.2.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/vector-map/map/jquery-jvectormap-au-mill.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/vector-map/map/jquery-jvectormap-in-mill.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/vector-map/map/jquery-jvectormap-asia-mill.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/dashboard/default.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/notify/index.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/datepicker/date-picker/datepicker.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/datepicker/date-picker/datepicker.en.js')); ?>"></script>
+        <script src="<?php echo e(asset('assets/js/datepicker/date-picker/datepicker.custom.js')); ?>"></script>
+    <?php $__env->stopPush(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\kemia-project\resources\views/dashboard/home.blade.php ENDPATH**/ ?>

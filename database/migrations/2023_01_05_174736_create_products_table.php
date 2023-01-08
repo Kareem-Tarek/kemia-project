@@ -17,13 +17,13 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('title', '600');
             $table->longText('description')->nullable();
+            $table->longText('short_description')->nullable();
+            $table->decimal('price');
+            $table->decimal('discount')->nullable();
+            $table->string('category_id')->nullable();
+            $table->enum('status',['available','unavailable'])->default('available');
             $table->text('meta_description')->nullable();
             $table->text('keywords')->nullable();
-            $table->decimal('price', '65');
-            $table->decimal('discount')->nullable();
-            $table->string('image');
-            $table->string('category_id');
-            $table->enum('status',['available','unavailable'])->default('available');
             $table->timestamps();
             $table->softDeletes();
         });

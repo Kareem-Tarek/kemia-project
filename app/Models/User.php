@@ -28,6 +28,7 @@ class  User extends Authenticatable implements HasMedia
         'point',
         'photo'
     ];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -36,6 +37,7 @@ class  User extends Authenticatable implements HasMedia
     protected $hidden = [
         'password', 'remember_token',
     ];
+
     /**
      * The attributes that should be cast to native types.
      *

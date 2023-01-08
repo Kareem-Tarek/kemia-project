@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name','600');
-            $table->bigInteger('parent_id')->unsigned()->nullable();
             $table->foreign('parent_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
+            $table->bigInteger('parent_id')->unsigned()->nullable();
             $table->enum('status',['available','unavailable'])->default('available');
             $table->timestamps();
             $table->softDeletes();

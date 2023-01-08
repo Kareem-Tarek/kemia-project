@@ -25,6 +25,9 @@
                 <div class="card">
                     <div class="card-header pb-0">
                         <h5><?php echo e(__('category.category')); ?></h5>
+                        <?php if($categories): ?>
+                            <p class="mb-0 mt-3"><span class="text-decoration-underline font-warning"><?php echo e(__('category.note')); ?></span> <?php echo e(__('category.category_and_subcategory_note')); ?></p>
+                        <?php endif; ?>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">

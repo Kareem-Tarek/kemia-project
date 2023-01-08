@@ -24,6 +24,9 @@
                 <div class="card">
                     <div class="card-header pb-0">
                         <h5>{{ __('category.category') }}</h5>
+                        @if($categories)
+                            <p class="mb-0 mt-3"><span class="text-decoration-underline font-warning">{{ __('category.note') }}</span> {{ __('category.category_and_subcategory_note') }}</p>
+                        @endif
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">

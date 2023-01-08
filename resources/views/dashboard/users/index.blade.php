@@ -38,7 +38,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($users as $user)
+                                    @forelse($users as $user)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td><img style="max-width: 100px;max-height: 100px;" src="{{ $user->getFirstMediaUrl('user') != null ?  $user->getFirstMediaUrl('user') : asset('assets/images/dashboard/1.png')}}"></td>
@@ -73,7 +73,9 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                        @empty
+
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

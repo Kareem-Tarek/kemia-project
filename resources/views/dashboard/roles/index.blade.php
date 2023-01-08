@@ -35,7 +35,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($roles as $role)
+                                    @forelse ($roles as $role)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $role->name }}</td>
@@ -53,7 +53,8 @@
                                                 @endcan
                                             </td>
                                         </tr>
-                                    @endforeach
+                                        @empty
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

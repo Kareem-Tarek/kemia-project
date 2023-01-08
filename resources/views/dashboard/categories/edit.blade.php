@@ -18,7 +18,7 @@
             @if($category->parent_id == null)
                 {{ $category->name }} (ID: {{ $category->id }})
             @else
-                {{ $category->name }} (ID: {{ $category->id }}) <span class="text-danger">&RightArrow;</span> {{ $category->subCategory->name }} (ID: {{ $category->parent_id }})
+                {{ $category->name }} (ID: {{ $category->id }}) <span class="text-danger">@if(LaravelLocalization::getCurrentLocale() == 'en') &RightArrow; @else &LeftArrow;  @endif</span> {{ $category->subCategory->name }} (ID: {{ $category->parent_id }})
             @endif
         </li>
     @endcomponent
@@ -36,6 +36,7 @@
                             <li class="nav-item"><a class="nav-link @if(LaravelLocalization::getCurrentLocale() == 'ar') active  @endif" id="ar-tab" data-bs-toggle="pill" href="#ar" role="tab" aria-controls="ar" aria-selected="@if(LaravelLocalization::getCurrentLocale() == 'ar') true @else false @endif">{{__('master.arabic')}}<div class="media"></div></a></li>
                             <li class="nav-item"><a class="nav-link @if(LaravelLocalization::getCurrentLocale() == 'en') active  @endif" id="en-tab" data-bs-toggle="pill" href="#en" role="tab" aria-controls="en" aria-selected="@if(LaravelLocalization::getCurrentLocale() == 'en') true @else false @endif">{{__('master.english')}}</a></li>
                         </ul>
+                        
                         <form class="needs-validation" novalidate="" method="post"
                             action="{{ route('categories.update', $category->id) }}" enctype="multipart/form-data">
                             @csrf
@@ -47,7 +48,7 @@
                                         <div class="col-md-12 mb-3">
                                             <label class="form-label" for="validationCustom01">{{ __('category.name') }} <span class="text-danger">*</span></label>
                                             <input class="form-control" id="validationCustom01" type="text" required=""
-                                                name="name_en" placeholder="ex: ELECTRONICS" value="{{Request::old('name_en') ? Request::old('name_en') : $category->name}}" />
+                                                name="name_en" placeholder="ex: ELECTRONICS" value="{{Request::old('name_en') ? Request::old('name_en') : $category->getTranslation('name','en') }}" autocomplete="off"/>
                                             <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                             <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                         </div>
@@ -59,7 +60,7 @@
                                         <div class="col-md-12 mb-3">
                                             <label class="form-label" for="validationCustom01">{{ __('category.name') }} <span class="text-danger">*</span></label>
                                             <input class="form-control" id="validationCustom01" type="text" required=""
-                                                name="name_ar" placeholder="مثل: إلكترونيات" value="{{Request::old('name_ar') ? Request::old('name_ar') : $category->name}}" />
+                                                name="name_ar" placeholder="مثل: إلكترونيات" value="{{Request::old('name_ar') ? Request::old('name_ar') : $category->getTranslation('name','ar')}}" autocomplete="off"/>
                                             <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                             <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                         </div>

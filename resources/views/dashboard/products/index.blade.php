@@ -114,11 +114,9 @@
                                                 </div>
                                             </td>
                                         </tr>
-
                                         @empty
-                                            <div class="alert alert-secondary font-weight-bold text-center h5">No Products Yet <a href="{{ route('products.create') }}" class="text-decoration-underline text-dark">Please add product</a> and come back</div>
+                                            <div class="alert alert-secondary font-weight-bold text-center h5">There are no products yet! <a href="{{ route('products.create') }}" class="text-decoration-underline text-dark">Please add products</a> and come back again.</div>
                                     @endforelse
-
                                 </tbody>
                             </table>
                         </div>

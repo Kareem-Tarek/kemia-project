@@ -89,8 +89,8 @@
                                             </td>
                                         </tr>
                                         @empty
-                                        <div class="alert alert-secondary font-weight-bold text-center h5">You have no categories <a href="{{ route('categories.create') }}" class="text-decoration-underline text-dark">Please create category and sub-category</a> and come back</div>
-                                @endforelse
+                                        <div class="alert alert-secondary font-weight-bold text-center h5">There are no categories yet! <a href="{{ route('categories.create') }}" class="text-decoration-underline text-dark">Please add categories/sub-categories</a> and come back again!</div>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

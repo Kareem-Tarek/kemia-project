@@ -17,7 +17,7 @@ class Category extends Model
         'status',
     ];
 
-    public $translatable = ['name'];
+    public $translatable = ['name', 'status'];
 
     public function subCategory()
     {

@@ -4,9 +4,9 @@
     {{ __('product.product') ?? 'Product translation error' }}
 @endsection
 
-@push('css')
+{{-- @push('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
-@endpush
+@endpush --}}
 
 @section('content')
     @component('components.breadcrumb')
@@ -33,8 +33,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
 
-                            <table class="table-striped display table-bordered" id="responsive">
-
+                            <table class="table-striped display table-bordered @if($all_products->count() == 0) d-none @endif   " id="responsive">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -52,7 +51,7 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($all_products as $product)
+                                    @forelse ($all_products as $product)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td><img src="{{ $product->image }}" alt="{{ $product->title.'.img' }}" width="100"></td>
@@ -115,7 +114,11 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    @endforeach
+
+                                        @empty
+                                            <div class="alert alert-secondary font-weight-bold text-center h5">No Products Yet <a href="{{ route('products.create') }}" class="text-decoration-underline text-dark">Please add product</a> and come back</div>
+                                    @endforelse
+
                                 </tbody>
                             </table>
                         </div>

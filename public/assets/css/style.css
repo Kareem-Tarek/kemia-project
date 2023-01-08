@@ -103,6 +103,18 @@
 /**=====================
      01. General CSS Start
 ==========================**/
+
+table, th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center
+    }
+
+table { 
+  border-spacing: 20px;
+  margin: auto  ;
+}
+
 .countable-data-dashboard-home{
   font-weight: bold;
   font-size: 150%;

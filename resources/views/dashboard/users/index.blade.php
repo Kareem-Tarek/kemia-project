@@ -23,7 +23,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
-                            <table class="display" id="responsive">
+                            <table class="table-striped display table-bordered" id="responsive">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -85,7 +85,6 @@
 
 
     @push('scripts')
-        <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('assets/js/datatable/datatable-extension/custom.js') }}"></script>
         <script src="{{ asset('assets/js/prism/prism.min.js') }}"></script>
     @endpush

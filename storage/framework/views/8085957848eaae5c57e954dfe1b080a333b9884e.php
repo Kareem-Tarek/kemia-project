@@ -111,11 +111,9 @@
                                                 </div>
                                             </td>
                                         </tr>
-
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                            <div class="alert alert-secondary font-weight-bold text-center h5">No Products Yet <a href="<?php echo e(route('products.create')); ?>" class="text-decoration-underline text-dark">Please add product</a> and come back</div>
+                                            <div class="alert alert-secondary font-weight-bold text-center h5">There are no products yet! <a href="<?php echo e(route('products.create')); ?>" class="text-decoration-underline text-dark">Please add products</a> and come back again.</div>
                                     <?php endif; ?>
-
                                 </tbody>
                             </table>
                         </div>

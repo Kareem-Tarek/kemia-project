@@ -18,7 +18,7 @@
             @if($category->parent_id == null)
                 {{ $category->name }} (ID: {{ $category->id }})
             @else
-                {{ $category->name }} (ID: {{ $category->id }}) <span class="text-danger">@if(LaravelLocalization::getCurrentLocale() == 'en') &RightArrow; @else &LeftArrow;  @endif</span> {{ $category->subCategory->name }} (ID: {{ $category->parent_id }})
+                {{ $category->name }} (ID: {{ $category->id }}) <span class="text-danger">&RightArrow;</span> {{ $category->subCategory->name }} (ID: {{ $category->parent_id }})
             @endif
         </li>
     @endcomponent
@@ -30,6 +30,9 @@
                 <div class="card">
                     <div class="card-header pb-0">
                         <h5>{{ __('category.category') }}</h5>
+                        @if($category->parent_id != null)
+                            <p class="mb-0 mt-3"><span class="text-decoration-underline font-warning">{{ __('category.note') }}</span> {{ __('category.category_and_subcategory_note') }}</p>
+                        @endif
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">

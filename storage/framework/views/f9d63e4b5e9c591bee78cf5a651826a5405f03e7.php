@@ -19,7 +19,7 @@
             <?php if($category->parent_id == null): ?>
                 <?php echo e($category->name); ?> (ID: <?php echo e($category->id); ?>)
             <?php else: ?>
-                <?php echo e($category->name); ?> (ID: <?php echo e($category->id); ?>) <span class="text-danger"><?php if(LaravelLocalization::getCurrentLocale() == 'en'): ?> &RightArrow; <?php else: ?> &LeftArrow;  <?php endif; ?></span> <?php echo e($category->subCategory->name); ?> (ID: <?php echo e($category->parent_id); ?>)
+                <?php echo e($category->name); ?> (ID: <?php echo e($category->id); ?>) <span class="text-danger">&RightArrow;</span> <?php echo e($category->subCategory->name); ?> (ID: <?php echo e($category->parent_id); ?>)
             <?php endif; ?>
         </li>
     <?php echo $__env->renderComponent(); ?>
@@ -31,6 +31,9 @@
                 <div class="card">
                     <div class="card-header pb-0">
                         <h5><?php echo e(__('category.category')); ?></h5>
+                        <?php if($category->parent_id != null): ?>
+                            <p class="mb-0 mt-3"><span class="text-decoration-underline font-warning"><?php echo e(__('category.note')); ?></span> <?php echo e(__('category.category_and_subcategory_note')); ?></p>
+                        <?php endif; ?>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">

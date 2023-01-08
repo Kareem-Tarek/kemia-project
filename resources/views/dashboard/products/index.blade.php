@@ -130,11 +130,11 @@
 
     @push('scripts')
         <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ asset('assets/js/datatable/datatable-extension/dataTables.buttons.min.js') }}"></script>
+        {{-- <script src="{{ asset('assets/js/datatable/datatable-extension/dataTables.buttons.min.js') }}"></script>
         <script src="{{ asset('assets/js/datatable/datatable-extension/jszip.min.js') }}"></script>
         <script src="{{ asset('assets/js/datatable/datatable-extension/buttons.colVis.min.js') }}"></script>
         <script src="{{ asset('assets/js/datatable/datatable-extension/pdfmake.min.js') }}"></script>
-        <script src="{{ asset('assets/js/datatable/datatable-extension/vfs_fonts.js') }}"></script>
+        <script src="{{ asset('assets/js/datatable/datatable-extension/vfs_fonts.js') }}"></script> --}}
         <script src="{{ asset('assets/js/datatable/datatable-extension/dataTables.autoFill.min.js') }}"></script>
         <script src="{{ asset('assets/js/datatable/datatable-extension/dataTables.select.min.js') }}"></script>
         <script src="{{ asset('assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js') }}"></script>
@@ -153,7 +153,7 @@
         <script src="{{ asset('assets/js/clipboard/clipboard.min.js') }}"></script>
         <script src="{{ asset('assets/js/custom-card/custom-card.js') }}"></script>
         
-        <script src="{{asset('assets/js/bootstrap/popper.min.js')}}"></script>
+        <script src="{{asset('assets/js/bootstrap/popper.min.js')}}"></script> 
         <script src="{{asset('assets/js/bootstrap/bootstrap.min.js')}}"></script>
     @endpush
 @endsection

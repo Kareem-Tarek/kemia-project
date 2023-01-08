@@ -83,8 +83,8 @@
                                             </td>
                                         </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                        <div class="alert alert-secondary font-weight-bold text-center h5">You have no categories <a href="<?php echo e(route('categories.create')); ?>" class="text-decoration-underline text-dark">Please create category and sub-category</a> and come back</div>
-                                <?php endif; ?>
+                                        <div class="alert alert-secondary text-center h5">There are no categories yet! <a href="<?php echo e(route('categories.create')); ?>" class="text-decoration-underline fw-bold text-dark">Please add categories/sub-categories</a> and come back again!</div>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>

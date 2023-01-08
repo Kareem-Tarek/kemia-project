@@ -127,7 +127,7 @@ class CategoryController extends Controller
         }
         else{
             return redirect()->back()
-            ->with('error', 'Please delete sub category first!');
+            ->with('error', 'Please delete sub-category first!');
         }
     }
 

@@ -61,10 +61,6 @@
 
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label" for="validationCustom04">{{ __('product.discount') }} (%)</label>
-                                    {{-- <input class="form-control" id="validationCustom04" type="number" name="discount" min="0" max="1"
-                                        placeholder="ex: 0.20" required=""
-                                        value="{{ old('discount') }}" /> --}}
-
                                     <select name="discount" class="form-control" value="{{ old('discount') }}">
                                         <option value="" selected>Please select a discount.</option>
                                         <?php
@@ -91,7 +87,7 @@
                                                 @if($p_cat->parent_id == null)
                                                     {{ $p_cat->name }}
                                                 @else
-                                                    {{ $p_cat->name }} &RightArrow; {{ $p_cat->subCategory->name }}
+                                                    ({{ $p_cat->name }}) &RightArrow; {{ $p_cat->subCategory->name }}
                                                 @endif
                                             </option>
                                         @endforeach

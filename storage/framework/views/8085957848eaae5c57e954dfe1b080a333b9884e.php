@@ -74,7 +74,16 @@
                                             <td><?php echo e($product->keywords ?? __('master.null')); ?></td>
                                             <td><?php echo e(Str::words($product->description, 7, '...') ?? __('master.null')); ?></td>
                                             <td><?php echo e($product->meta_description ?? __('master.null')); ?></td>
-                                            <td><?php echo e($product->category->name ?? __('master.null')); ?></td>
+                                            
+                                            <td>
+                                                <?php if($product->category->parent_id == null): ?>
+                                                    <?php echo e($product->category->name); ?>
+
+                                                <?php else: ?>
+                                                    (<?php echo e($product->category->name); ?>) &RightArrow; <?php echo e($product->category->parent_id ?? __('master.null')); ?>
+
+                                                <?php endif; ?>
+                                            </td>
                                             <td>
                                                 <div style="display: flex;">
                                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('product-edit')): ?>

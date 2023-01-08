@@ -62,8 +62,6 @@
 
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label" for="validationCustom04"><?php echo e(__('product.discount')); ?> (%)</label>
-                                    
-
                                     <select name="discount" class="form-control" value="<?php echo e(old('discount')); ?>">
                                         <option value="" selected>Please select a discount.</option>
                                         <?php
@@ -91,7 +89,7 @@
                                                     <?php echo e($p_cat->name); ?>
 
                                                 <?php else: ?>
-                                                    <?php echo e($p_cat->name); ?> &RightArrow; <?php echo e($p_cat->subCategory->name); ?>
+                                                    (<?php echo e($p_cat->name); ?>) &RightArrow; <?php echo e($p_cat->subCategory->name); ?>
 
                                                 <?php endif; ?>
                                             </option>

@@ -80,7 +80,14 @@
                                             <td>{{ $product->keywords ?? __('master.null') }}</td>
                                             <td>{{ Str::words($product->description, 7, '...') ?? __('master.null') }}</td>
                                             <td>{{ $product->meta_description ?? __('master.null') }}</td>
-                                            <td>{{ $product->category->name ?? __('master.null') }}</td>
+                                            {{-- <td>{{ $product->category->name ?? __('master.null') }}</td> --}}
+                                            <td>
+                                                @if($product->category->parent_id == null)
+                                                    {{ $product->category->name }}
+                                                @else
+                                                    ({{ $product->category->name }}) &RightArrow; {{ $product->category->parent_id ?? __('master.null') }}
+                                                @endif
+                                            </td>
                                             <td>
                                                 <div style="display: flex;">
                                                     @can('product-edit')

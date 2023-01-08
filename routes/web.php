@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -9,41 +8,26 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+    Auth::routes();
 
-Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
-    ],
-    function () {
-        Auth::routes();
+    Route::group([
+        'prefix' => 'dashboard',
+        'middleware' => ['auth']], function () {
+        Route::get('/', [HomeController::class, 'index'])->name('dashboard.home');
 
-        Route::group(
-            [
-                'prefix' => 'dashboard',
-                'middleware' => ['auth'],
-            ],
+        /** Start route users **/
+        Route::resource('users', UserController::class); /** End route users **/
 
-            function () {
-                Route::get('/', [HomeController::class, 'index'])->name('dashboard.home');
+        /** Start route roles **/
+        Route::resource('roles', RoleController::class)->except(['show']); /** End route roles **/
 
-                /** Start Route Users **/
-                Route::resource('users', UserController::class);
-                /** End Route Users **/
+        /** Start route categories **/
+        Route::resource('categories', CategoryController::class)->except(['show']); /** End route categories **/
 
-                /** Start Route Roles **/
-                Route::resource('roles', RoleController::class)->except(['show']);
-                /** End Route Roles **/
-
-                /** Start Route Categories **/
-                Route::resource('categories', CategoryController::class)->except(['show']);
-                /** End Route Categories **/
-
-                /** Start Route Products **/
-                Route::resource('products', ProductController::class)->except(['show']);
-                /** End Route Products **/
-            }
-
-        );
-    }
-);
+        /** Start route products **/
+        Route::resource('products', ProductController::class)->except(['show']); /** End route products **/
+    });
+});

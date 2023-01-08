@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -10,7 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class  User extends Authenticatable implements HasMedia
 {
-    use HasRoles, InteractsWithMedia;
+    use HasRoles, InteractsWithMedia, SoftDeletes;
 
     // use Notifiable, HasRoles;
     /**

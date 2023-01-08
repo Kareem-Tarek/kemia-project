@@ -14,9 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            // $table->id();
             $table->bigIncrements('id');
-            $table->string('title');
+            $table->string('title', '600');
             $table->longText('description')->nullable();
             $table->text('meta_description')->nullable();
             $table->text('keywords')->nullable();
@@ -24,7 +23,9 @@ return new class extends Migration
             $table->decimal('discount')->nullable();
             $table->string('image');
             $table->string('category_id');
+            $table->enum('status',['available','unavailable'])->default('available');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

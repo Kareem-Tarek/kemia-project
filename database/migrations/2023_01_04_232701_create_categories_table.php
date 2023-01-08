@@ -14,13 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            // $table->id();
             $table->bigIncrements('id');
+            $table->string('name','600');
             $table->bigInteger('parent_id')->unsigned()->nullable();
             $table->foreign('parent_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
-            $table->text('name');
             $table->enum('status',['available','unavailable'])->default('available');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

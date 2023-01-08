@@ -4,11 +4,9 @@
             <i data-feather="settings"></i>
         </a>
         <img class="img-90 rounded-circle"
-            src="
-                    {{ auth()->user()->getFirstMediaUrl('user') != null
+            src="{{ auth()->user()->getFirstMediaUrl('user') != null
                         ? auth()->user()->getFirstMediaUrl('user')
-                        : asset('assets/images/dashboard/1.png') }}"
-            alt="" />
+                        : asset('assets/images/dashboard/1.png') }}" alt="" />
         <div class="badge-bottom"><span class="badge badge-primary">{{ auth()->user()->roles_name }}</span></div>
         <a href="user-profile">
             <h6 class="mt-3 f-14 f-w-600">{{ auth()->user()->name }}</h6>
@@ -20,8 +18,7 @@
             <div id="mainnav">
                 <ul class="nav-menu custom-scrollbar">
                     <li class="back-btn">
-                        <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"
-                                aria-hidden="true"></i></div>
+                        <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                     </li>
                     <li class="sidebar-main-title">
                         <div class="text-center">
@@ -43,13 +40,9 @@
                                 <span>{{ __('role.role') }}</span>
                             </a>
                             <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('roles') }};">
-                                <li><a href="{{ route('roles.index') }}"
-                                        class="{{ routeActive('roles.index') }}">{{ __('role.role_list') }}</a>
-                                </li>
+                                <li><a href="{{ route('roles.index') }}" class="{{ routeActive('roles.index') }}">{{ __('role.role_list') }}</a></li>
                                 @can('role-create')
-                                    <li><a href="{{ route('roles.create') }}"
-                                            class="{{ routeActive('roles.create') }}">{{ __('role.add_role') }}
-                                        </a></li>
+                                    <li><a href="{{ route('roles.create') }}" class="{{ routeActive('roles.create') }}">{{ __('role.add_role') }}</a></li>
                                 @endcan
                             </ul>
                         </li>
@@ -81,13 +74,9 @@
                                 <span>{{ __('category.category') }}</span>
                             </a>
                             <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('categories') }};">
-                                <li><a href="{{ route('categories.index') }}"
-                                        class="{{ routeActive('categories.index') }}">{{ __('category.category_list') }}</a>
-                                </li>
+                                <li><a href="{{ route('categories.index')}}" class="{{ routeActive('categories.index') }}">{{ __('category.category_list') }}</a></li>
                                 @can('category-create')
-                                    <li><a href="{{ route('categories.create') }}"
-                                            class="{{ routeActive('categories.create') }}">{{ __('category.add_category') }}
-                                        </a></li>
+                                    <li><a href="{{ route('categories.create') }}" class="{{ routeActive('categories.create') }}">{{ __('category.add_category') }}</a></li>
                                 @endcan
                             </ul>
                         </li>
@@ -97,16 +86,13 @@
                         <li class="dropdown">
                             <a class="nav-link menu-title {{ prefixActive('products') }}" href="javascript:void(0)">
                                 <i data-feather="home"></i>
-                                <span>{{ __('product.product') }}</span>
+                                <span>{{ __('product.product')}}</span>
                             </a>
                             <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('products') }};">
-                                <li><a href="{{ route('products.index') }}"
-                                        class="{{ routeActive('products.index') }}">{{ __('product.product_list') }}</a>
+                                <li><a href="{{ route('products.index')}}" class="{{ routeActive('products.index') }}">{{ __('product.product_list') }}</a>
                                 </li>
                                 @can('product-create')
-                                    <li><a href="{{ route('products.create') }}"
-                                            class="{{ routeActive('products.create') }}">{{ __('product.add_product') }}
-                                        </a></li>
+                                    <li><a href="{{ route('products.create')}}" class="{{ routeActive('products.create') }}">{{ __('product.add_product') }}</a></li>
                                 @endcan
                             </ul>
                         </li>

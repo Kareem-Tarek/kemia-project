@@ -15,27 +15,29 @@ use Illuminate\Support\Str;
 class UserController extends Controller
 {
 
-    function __construct()
+    /**
+     * UserController constructor.
+     */
+    public function __construct()
     {
         $this->middleware('permission:user-list',   ['only' => ['index']]);
         $this->middleware('permission:user-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:user-edit',   ['only' => ['edit', 'update']]);
         $this->middleware('permission:user-delete', ['only' => ['destroy']]);
     }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index(Request $request)
+    public function index()
     {
         $users = User::where('roles_name', '!=', 'Volunteer')->get();
         return view('dashboard.users.index', compact('users'));
     }
+
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -43,11 +45,10 @@ class UserController extends Controller
         $roles = Role::pluck('name', 'name')->all();
         return view('dashboard.users.create', compact('roles'));
     }
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param UserRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(UserRequest $request)
     {
@@ -65,21 +66,18 @@ class UserController extends Controller
         return redirect()->route('users.index')
             ->with('success', __('master.messages_save'));
     }
+
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \never
      */
     public function show()
     {
         return abort(404);
     }
+
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit($id)
     {
@@ -88,12 +86,11 @@ class UserController extends Controller
         $userRole = $user->roles->pluck('name', 'name')->all();
         return view('dashboard.users.edit', compact('user', 'roles', 'userRole'));
     }
+
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
@@ -114,11 +111,10 @@ class UserController extends Controller
         return redirect()->route('users.index')
             ->with('success', __('master.messages_edit'));
     }
+
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
@@ -129,6 +125,9 @@ class UserController extends Controller
             ->with('success', __('master.messages_delete'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function inActiveList()
     {
         $users = User::status('inactive')->get();

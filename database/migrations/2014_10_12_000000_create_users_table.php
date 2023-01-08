@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password')->nullable();
@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->date('birth')->nullable();
             $table->enum('status', ['active', 'inactive', 'block'])->default('active');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

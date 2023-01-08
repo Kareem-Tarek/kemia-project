@@ -132,11 +132,4 @@ class CategoryController extends Controller
         }
     }
 
-    public function inActiveList()
-    {
-        $categories = Category::status('inactive')->get();
-        return view('dashboard.categories.in-active-list', compact('categories'));
-    }
-
-
 }

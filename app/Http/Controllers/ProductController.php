@@ -49,7 +49,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $pic_name = $request->file('image')->getClientOriginalName();
+        // $pic_name = $request->file('image')->getClientOriginalName();
 
         $product                   = new Product;
         $product->title            = $request->title;
@@ -58,7 +58,7 @@ class ProductController extends Controller
         $product->description      = $request->description;
         $product->meta_description = $request->meta_description;
         $product->keywords         = $request->keywords;
-        $product->image            = '/assets/images/custom_images/'.$pic_name;
+        // $product->image            = '/assets/images/custom_images/'.$pic_name;
         $product->category_id      = $request->category_id;
         $product->save();
 
@@ -108,6 +108,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::FindOrFail($id);
+        $product->delete();
+        return redirect()->back()
+            ->with('success', __('master.messages_delete'));
     }
 }

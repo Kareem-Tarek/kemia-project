@@ -81,21 +81,25 @@
                             </div>
 
                             <div class="row g-1">
-
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label" for="validationDefault08"><?php echo e(__('product.product_category')); ?> <span class="text-danger">*</span></label>
                                     <select name="category_id" class="form-control" value="<?php echo e(old('category_id')); ?>">
                                         <option value="" selected>No category selected.</option>
-                                        <?php $__currentLoopData = $product_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pcat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <option value="<?php echo e($pcat->id); ?>"><?php echo e($pcat->name); ?></option>
+                                        <?php $__currentLoopData = $product_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p_cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($p_cat->id); ?>">
+                                                <?php if($p_cat->parent_id == null): ?>
+                                                    <?php echo e($p_cat->name); ?>
+
+                                                <?php else: ?>
+                                                    <?php echo e($p_cat->name); ?> &RightArrow; <?php echo e($p_cat->name); ?>
+
+                                                <?php endif; ?>
+                                            </option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <div class="valid-feedback"><?php echo e(__('validation.valid_feedback')); ?></div>
                                     <div class="invalid-feedback"><?php echo e(__('validation.invalid_feedback')); ?></div>
                                 </div>
-                                
-                                
-
                             </div>
 
                             <div class="row g-1">

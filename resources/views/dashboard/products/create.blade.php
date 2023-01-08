@@ -86,8 +86,14 @@
                                     <label class="form-label" for="validationDefault08">{{ __('product.product_category') }} <span class="text-danger">*</span></label>
                                     <select name="category_id" class="form-control" value="{{ old('category_id') }}">
                                         <option value="" selected>No category selected.</option>
-                                        @foreach($product_category as $pcat)
-                                            <option value="{{ $pcat->id }}">{{ $pcat->name }}</option>
+                                        @foreach($product_category as $p_cat)
+                                            <option value="{{ $p_cat->id }}">
+                                                @if($p_cat->parent_id == null)
+                                                    {{ $p_cat->name }}
+                                                @else
+                                                    {{ $p_cat->name }} &RightArrow; {{ $p_cat->name }}
+                                                @endif
+                                            </option>
                                         @endforeach
                                     </select>
                                     <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>

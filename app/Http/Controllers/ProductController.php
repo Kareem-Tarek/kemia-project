@@ -34,10 +34,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $product_category    = Category::whereNull('parent_id')->get();
-        $product_subcategory = Category::whereNotNull('parent_id')->get();
+        // $product_category    = Category::whereNull('parent_id')->get();
+        // $product_subcategory = Category::whereNotNull('parent_id')->get();
+        $product_category = Category::get();
 
-        return view('dashboard.products.create', compact('product_category', 'product_subcategory'));
+        return view('dashboard.products.create', compact('product_category'));
     }
 
     /**
@@ -49,7 +50,6 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $pic_name = $request->file('image')->getClientOriginalName();
-        
 
         $product                   = new Product;
         $product->title            = $request->title;

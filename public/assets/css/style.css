@@ -103,6 +103,10 @@
 /**=====================
      01. General CSS Start
 ==========================**/
+.product-discount-index{
+  font-weight: bold;
+}
+
 html {
   max-width: 100vw;
   overflow-x: hidden; }

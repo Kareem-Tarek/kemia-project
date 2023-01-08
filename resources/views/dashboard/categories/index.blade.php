@@ -63,7 +63,11 @@
                                                     <h6><span class="badge badge-danger">{{ ucfirst($category->status) }}</span></h6>
                                                 @endif
                                             </td>
-                                            <td>{{ $category->subCategory->name ?? __('master.null') }}</td>
+
+                                            <td class="@if($category->parent_id == null) text-center @endif">
+                                                {{ $category->subCategory->name ?? '—' }}
+                                            </td>
+
                                             <td>
                                                 <div style="display: flex;">
                                                     @can('category-edit')

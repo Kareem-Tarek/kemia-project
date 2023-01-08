@@ -63,7 +63,7 @@
                                                 @if($product->discount <= 0 || $product->discount == null)
                                                     —
                                                 @else
-                                                    <span class="text-light font-weight-bold bg-dark p-1 rounded">
+                                                    <span class="product-discount-index text-light bg-dark p-1 rounded">
                                                         {{ $product->discount * 100 }}%
                                                     </span>
                                                 @endif
@@ -77,15 +77,24 @@
                                                     <span class="text-success">{{ $product->price - ($product->price * $product->discount) }}</span>
                                                 @endif
                                             </td>
-                                            <td>{{ $product->keywords ?? __('master.null') }}</td>
-                                            <td>{{ Str::words($product->description, 7, '...') ?? __('master.null') }}</td>
-                                            <td>{{ $product->meta_description ?? __('master.null') }}</td>
-                                            {{-- <td>{{ $product->category->name ?? __('master.null') }}</td> --}}
+
+                                            <td class="@if($product->keywords == null) text-center @endif">
+                                                {{ $product->keywords ?? '—' }}
+                                            </td>
+
+                                            <td class="@if($product->description == null) text-center @endif">
+                                                {{ Str::words($product->description, 7, '...') ?? '—' }}
+                                            </td>
+
+                                            <td class="@if($product->meta_description == null) text-center @endif">
+                                                {{ $product->meta_description ?? '—' }}
+                                            </td>
+                                            
                                             <td>
                                                 @if($product->category->parent_id == null)
                                                     {{ $product->category->name }}
                                                 @else
-                                                    ({{ $product->category->name }}) &RightArrow; {{ $product->category->parent_id ?? __('master.null') }}
+                                                    ({{ $product->category->name }}) &RightArrow; {{ $product->category->parent_id ?? __('master.ull') }}
                                                 @endif
                                             </td>
                                             <td>

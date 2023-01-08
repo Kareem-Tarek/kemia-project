@@ -52,7 +52,7 @@
                                     <div class="col-md-12 mb-3">
                                         <label class="form-label" for="validationCustom01">{{ __('category.name') }} <span class="text-danger">*</span></label>
                                         <input class="form-control" id="validationCustom01" type="text" required=""
-                                            name="name_ar" placeholder="مثل: الكترونيات" value="{{ old('name_ar') }}" />
+                                            name="name_ar" placeholder="مثل: إلكترونيات" value="{{ old('name_ar') }}" />
                                         <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                         <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                     </div>
@@ -72,27 +72,6 @@
                                     <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                 </div>
                             </div>
-
-                            {{-- <div class="row g-2">
-
-                                <div class="col-md-6">
-                                    <label class="form-label" for="validationCustom03">{{ __('master.mobile') }}</label>
-                                    <input class="form-control" id="validationCustom03" type="text" name="mobile"
-                                        placeholder="رقم الهاتف" required="" value="{{ old('mobile') }}" />
-                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
-                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
-                                </div>
-
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label" for="validationCustom04">{{ __('master.email') }}</label>
-                                    <input class="form-control" id="validationCustom04" type="email" name="email"
-                                        placeholder="ex: mohamedsamy@mail.com" required=""
-                                        value="{{ old('email') }}" />
-                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
-                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
-                                </div>
-
-                            </div> --}}
 
                             <button class="btn btn-primary" type="submit">{{ __('master.save') }}</button>
                         </form>

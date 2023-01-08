@@ -20,7 +20,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->text('meta_description')->nullable();
             $table->text('keywords')->nullable();
-            $table->decimal('price');
+            $table->decimal('price', '65');
             $table->decimal('discount')->nullable();
             $table->string('image');
             $table->string('category_id');

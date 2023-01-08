@@ -21,7 +21,7 @@
 
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
-                            <table class="display" id="responsive">
+                            <table class="table-striped display table-bordered" id="responsive">
                                 <thead>
                                     <tr>
                                         <th>#</th>

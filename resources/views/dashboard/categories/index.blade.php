@@ -64,7 +64,7 @@
                                                 @endif
                                             </td>
 
-                                            <td class="@if($category->parent_id == null) text-center @endif">
+                                            <td class="text-center">
                                                 {{ $category->subCategory->name ?? '—' }}
                                             </td>
 

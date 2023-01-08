@@ -91,7 +91,7 @@
                                                 @if($p_cat->parent_id == null)
                                                     {{ $p_cat->name }}
                                                 @else
-                                                    {{ $p_cat->name }} &RightArrow; {{ $p_cat->name }}
+                                                    {{ $p_cat->name }} &RightArrow; {{ $p_cat->subCategory->name }}
                                                 @endif
                                             </option>
                                         @endforeach

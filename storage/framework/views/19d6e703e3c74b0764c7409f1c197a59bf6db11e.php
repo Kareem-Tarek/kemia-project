@@ -91,7 +91,7 @@
                                                     <?php echo e($p_cat->name); ?>
 
                                                 <?php else: ?>
-                                                    <?php echo e($p_cat->name); ?> &RightArrow; <?php echo e($p_cat->name); ?>
+                                                    <?php echo e($p_cat->name); ?> &RightArrow; <?php echo e($p_cat->subCategory->name); ?>
 
                                                 <?php endif; ?>
                                             </option>

@@ -24,9 +24,9 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="table-striped table-responsive">
+                        <div class="table-responsive">
 
-                            <table class="table-striped display" id="responsive">
+                            <table class="table-striped display table-bordered" id="responsive">
 
                                 <thead>
                                     <tr>

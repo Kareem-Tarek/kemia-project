@@ -22,7 +22,7 @@ class CreateProductSeeder extends Seeder
             'keywords'         => 'mobile, phone, portable device',
             'price'            => '5000',
             'discount'         => '0.07',
-            'image'            => '/assets/images/custom_images/note5.jfif',
+            // 'image'            => '/assets/images/custom_images/note5.jfif',
             'category_id'      => 1,    // category_id = 1 (Electronics)
         ]);
 
@@ -33,7 +33,7 @@ class CreateProductSeeder extends Seeder
             'keywords'         => 'mobile, phone, portable device',
             'price'            => '12000',
             'discount'         => '0.15',
-            'image'            => '/assets/images/custom_images/iphone-14-pro-max.jpg',
+            // 'image'            => '/assets/images/custom_images/iphone-14-pro-max.jpg',
             'category_id'      => 1,    // category_id = 1 (Electronics)
         ]);
 
@@ -43,7 +43,7 @@ class CreateProductSeeder extends Seeder
             'keywords'         => 'sleeping, comfort, relaxing',
             'price'            => '4500',
             'discount'         => '0.12',
-            'image'            => '/assets/images/custom_images/bedroom-sofa.jpg',
+            // 'image'            => '/assets/images/custom_images/bedroom-sofa.jpg',
             'category_id'      => 2,    // category_id = 2 (Furniture)
         ]);
         $product = Product::create([  // ID = 4
@@ -51,7 +51,7 @@ class CreateProductSeeder extends Seeder
             'keywords'         => 'relaxing, outdoor',
             'price'            => '73600',
             'discount'         => '0.38',
-            'image'            => '/assets/images/custom_images/savoy-outdoor-teak-wood-set-4-people.jpg',
+            // 'image'            => '/assets/images/custom_images/savoy-outdoor-teak-wood-set-4-people.jpg',
             'category_id'      => 2,    // category_id = 2 (Furniture)
         ]);
 
@@ -62,7 +62,7 @@ class CreateProductSeeder extends Seeder
             'keywords'         => 'game, war, guns, multiplayer',
             'price'            => '800',
             'discount'         => '0',
-            'image'            => '/assets/images/custom_images/pubg.jfif',
+            // 'image'            => '/assets/images/custom_images/pubg.jfif',
             'category_id'      => 3,    // category_id = 3 (Video Games)
         ]);
 
@@ -73,7 +73,7 @@ class CreateProductSeeder extends Seeder
             'keywords'         => 'game, horror',
             'price'            => '650',
             'discount'         => '0.20',
-            'image'            => '/assets/images/custom_images/dying-light.jpg',
+            // 'image'            => '/assets/images/custom_images/dying-light.jpg',
             'category_id'      => 3,    // category_id = 3 (Video Games)
         ]);
 

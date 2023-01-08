@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">
                             <li class="nav-item"><a class="nav-link <?php if(LaravelLocalization::getCurrentLocale() == 'ar'): ?> active  <?php endif; ?>" id="ar-tab" data-bs-toggle="pill" href="#ar" role="tab" aria-controls="ar" aria-selected="<?php if(LaravelLocalization::getCurrentLocale() == 'ar'): ?> true <?php else: ?> false <?php endif; ?>"><?php echo e(__('master.arabic')); ?><div class="media"></div></a></li>
-                            <li class="nav-item"><a class="nav-link <?php if(LaravelLocalization::getCurrentLocale() == 'en'): ?> active  <?php endif; ?>" id="en-tab" data-bs-toggle="pill" href="#en" role="tab" aria-controls="en" aria-selected="<?php if(LaravelLocalization::getCurrentLocale() == 'ar'): ?> true <?php else: ?> false <?php endif; ?>"><?php echo e(__('master.english')); ?></a></li>
+                            <li class="nav-item"><a class="nav-link <?php if(LaravelLocalization::getCurrentLocale() == 'en'): ?> active  <?php endif; ?>" id="en-tab" data-bs-toggle="pill" href="#en" role="tab" aria-controls="en" aria-selected="<?php if(LaravelLocalization::getCurrentLocale() == 'en'): ?> true <?php else: ?> false <?php endif; ?>"><?php echo e(__('master.english')); ?></a></li>
                         </ul>
                         
                             <form class="needs-validation" novalidate="" id="alert-form" method="post" action="<?php echo e(route('categories.store')); ?>"

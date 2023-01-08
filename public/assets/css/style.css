@@ -107,6 +107,13 @@
   font-weight: bold;
 }
 
+#gain_value_final_price_product_create{
+  background-color: rgb(193, 222, 193); 
+  font-weight: bold; 
+  color: rgb(175, 11, 11); 
+  border: 2px solid green;
+}
+
 html {
   max-width: 100vw;
   overflow-x: hidden; }

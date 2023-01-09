@@ -69,9 +69,10 @@
                                         <label class="form-label">{{ __('category.sub_category_of') }}</label>
                                             <select name="parent_id" class="form-control" value="{{ old('parent_id') }}">
                                                 <option value="" selected>No sub-category selected.</option>
-                                                @foreach($categories as $category)
+                                                @forelse($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                @endforeach
+                                                    @empty
+                                                @endforelse
                                             </select>
                                         <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                         <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>

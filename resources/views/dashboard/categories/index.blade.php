@@ -51,9 +51,9 @@
                                             <td>
                                                 {{ $category->name }} 
                                                 @if($category->parent_id == null) 
-                                                    <label style="color: green;">{{ '(Main Catgeory)' }}</label> 
+                                                    <label style="color: rgb(41, 197, 41);">{{ '(Main Catgeory)' }}</label> 
                                                 @else 
-                                                    <label style="color: rgb(183, 92, 2);">{{ '(Sub-catgeory)' }}</label> 
+                                                    <label style="color: rgb(236, 138, 40);">{{ '(Sub-catgeory)' }}</label> 
                                                 @endif
                                             </td>
                                             <td class="text-center">

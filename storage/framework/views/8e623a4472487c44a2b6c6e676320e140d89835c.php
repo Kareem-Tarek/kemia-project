@@ -44,9 +44,9 @@
                                             <td>
                                                 <?php echo e($category->name); ?> 
                                                 <?php if($category->parent_id == null): ?> 
-                                                    <label style="color: green;"><?php echo e('(Main Catgeory)'); ?></label> 
+                                                    <label style="color: rgb(41, 197, 41);"><?php echo e('(Main Catgeory)'); ?></label> 
                                                 <?php else: ?> 
-                                                    <label style="color: rgb(183, 92, 2);"><?php echo e('(Sub-catgeory)'); ?></label> 
+                                                    <label style="color: rgb(236, 138, 40);"><?php echo e('(Sub-catgeory)'); ?></label> 
                                                 <?php endif; ?>
                                             </td>
                                             <td class="text-center">

@@ -14,7 +14,7 @@
         @endslot
 
         <li class="breadcrumb-item"><a href="{{ route('products.index') }}">{{ __('product.product') }}</a></li>
-        <li class="breadcrumb-item active"> {{ __('product.product_edit') }}</li>
+        <li class="breadcrumb-item active"> {{ __('product.product') }}</li>
     @endcomponent
 
 
@@ -32,9 +32,10 @@
                             <li class="nav-item"><a class="nav-link @if(LaravelLocalization::getCurrentLocale() == 'en') active  @endif" id="en-tab" data-bs-toggle="pill" href="#en" role="tab" aria-controls="en" aria-selected="@if(LaravelLocalization::getCurrentLocale() == 'en') true @else false @endif">{{__('master.english')}}</a></li>
                         </ul>
 
-                        <form class="needs-validation" novalidate="" method="post" action="{{ route('products.edit') }}"
+                        <form class="needs-validation" novalidate="" method="post" action="{{ route('products.update' , $product->id) }}"
                             enctype="multipart/form-data">
                             @csrf
+                            {{ method_field('patch') }}
 
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade mt-4 @if(LaravelLocalization::getCurrentLocale() == 'en') show active @endif" id="en" role="tabpanel" aria-labelledby="en-tab">
@@ -42,7 +43,7 @@
                                             <div class="col-md-12 mb-3">
                                                 <label class="form-label" for="validationCustom01">{{ __('product.title') }} <span class="text-danger">*</span></label>
                                                 <input class="form-control" id="validationCustom01" type="text" required=""
-                                                    name="title_en" placeholder="ex: Black shirt" value="{{ Request::old('title_en') ? Request::old('title_en') : $product_edit->getTranslation( 'title', 'en' ) }}" />
+                                                    name="title_en" placeholder="ex: Black shirt" value="{{ Request::old('title_en') ? Request::old('title_en') : $product->getTranslation( 'title', 'en' ) }}" />
                                                 <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                                 <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div> 
                                             </div>
@@ -52,7 +53,7 @@
                                             <div class="col-md-12 mb-3">
                                                 <label class="form-label" for="validationCustom01">{{ __('product.description') }}</label>
                                                 <textarea class="form-control" id="validationCustom01"
-                                                    name="description_en" placeholder="ex: color, size, about product" value="{{ Request::old('description_en') ? Request::old('description_en') : $product_edit->getTranslation( 'description', 'en' ) }}"> </textarea>
+                                                    name="description_en" placeholder="ex: color, size, about product" value="{{ Request::old('description_en') ? Request::old('description_en') : $product->getTranslation( 'description', 'en' ) }}"> </textarea>
                                                 <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                                 <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                             </div>
@@ -64,7 +65,7 @@
                                             <div class="col-md-12 mb-3">
                                                 <label class="form-label" for="validationCustom01">{{ __('product.title') }} <span class="text-danger">*</span></label>
                                                 <input class="form-control" id="validationCustom01" type="text" required=""
-                                                    name="title_ar" placeholder="ex: Black shirt" value="{{ Request::old('title_ar') ? Request::old('title_ar') : $product_edit->getTranslation( 'title', 'ar' ) }}" />
+                                                    name="title_ar" placeholder="ex: Black shirt" value="{{ Request::old('title_ar') ? Request::old('title_ar') : $product->getTranslation( 'title', 'ar' ) }}" />
                                                 <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                                 <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                             </div>
@@ -74,7 +75,7 @@
                                             <div class="col-md-12 mb-3">
                                                 <label class="form-label" for="validationCustom01">{{ __('product.description') }}</label>
                                                 <textarea class="form-control" id="validationCustom01"
-                                                    name="description_ar" placeholder="ex: color, size, about product" value="{{ Request::old('description_ar') ? Request::old('description_ar') : $product_edit->getTranslation( 'description', 'ar' ) }}"> </textarea>
+                                                    name="description_ar" placeholder="ex: color, size, about product" value="{{ Request::old('description_ar') ? Request::old('description_ar') : $product->getTranslation( 'description', 'ar' ) }}"> </textarea>
                                                 <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                                 <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                             </div>
@@ -95,7 +96,7 @@
                             <div class="row g-1">
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label" for="validationCustom04">{{ __('product.discount') }} (%)</label>
-                                    <select name="discount" id="discount" class="form-control" value="{{ old('discount') }}">
+                                    <select name="discount" id="discount" class="form-control" value="{{ Request::old('discount') ? Request::old('discount') : $product->discount }}">
                                         <option value="" selected>Please select a discount.</option>
                                         <?php
                                             for($d = 0.01 ; $d < 1 ; $d = $d + 0.01){   //for(start => 1% ; end => 99% ; increment=> ++1)
@@ -130,17 +131,18 @@
                             <div class="row g-1">
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label" for="validationDefault08">{{ __('product.product_category') }} <span class="text-danger">*</span></label>
-                                    <select name="category_id" class="form-control" value="{{ Request::old('category_id') ? Request::old('category_id') : $product_category->name }}">
+                                    <select name="category_id" class="form-control" value="{{ Request::old('category_id') ? Request::old('category_id') : $product->category_id }}">
                                         <option value="" selected>No category selected.</option>
-                                        @foreach($product_category as $p_cat)
-                                            <option value="{{ $p_cat->id }}">
+                                        @forelse($product_category as $p_cat)
+                                            <option value="{{ $p_cat->id }}" {{ $p_cat->id == $product->category_id ? 'selected'  : '' }}>
                                                 @if($p_cat->parent_id == null)
                                                     {{ $p_cat->name }}
                                                 @else
                                                     ({{ $p_cat->name }}) &RightArrow; {{ $p_cat->subCategory->name }}
                                                 @endif
                                             </option>
-                                        @endforeach
+                                            @empty
+                                        @endforelse
                                     </select>
                                     <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                     <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
@@ -151,7 +153,7 @@
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label" for="validationCustom01">{{ __('product.keywords') }}</label>
                                     <input class="form-control" id="validationCustom01" type="text"
-                                        name="keywords" placeholder="ex: Clips, Music, etc." value="{{ old('keywords') }}" />
+                                        name="keywords" placeholder="ex: Clips, Music, etc." value="{{ Request::old('keywords') ? Request::old('keywords') : $product->keywords }}" />
                                     <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                     <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                 </div>
@@ -161,7 +163,7 @@
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label" for="validationCustom01">{{ __('product.meta_description') }}</label>
                                     <textarea class="form-control" id="validationCustom01"
-                                        name="meta_description" placeholder="ex: Manufacturer, made in china" value="{{ old('meta_description') }}"> </textarea>
+                                        name="meta_description" placeholder="ex: Manufacturer, made in china" value="{{ Request::old('meta_description') ? Request::old('meta_description') : $product->meta_description }}"> </textarea>
                                     <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                     <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                 </div>

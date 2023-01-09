@@ -68,18 +68,33 @@
                                             </td>
 
                                             <td class="<?php if($product->keywords == null): ?> text-center <?php endif; ?>">
-                                                <?php echo e($product->keywords ?? '—'); ?>
+                                                <?php if(LaravelLocalization::getCurrentLocale() == 'en' && $product->keywords == null || 
+                                                    (LaravelLocalization::getCurrentLocale() == 'ar' && $product->keywords == null)): ?>
+                                                    —
+                                                <?php else: ?>
+                                                    <?php echo e($product->keywords ?? '—'); ?>
 
+                                                <?php endif; ?>
                                             </td>
 
                                             <td class="<?php if($product->description == null): ?> text-center <?php endif; ?>">
-                                                <?php echo e(Str::words($product->description, 7, '...') ?? '—'); ?>
+                                                <?php if(LaravelLocalization::getCurrentLocale() == 'en' && $product->description == null || 
+                                                    (LaravelLocalization::getCurrentLocale() == 'ar' && $product->description == null)): ?>
+                                                    —
+                                                <?php else: ?>
+                                                    <?php echo e(Str::words($product->description, 7, '...') ?? '—'); ?>
 
+                                                <?php endif; ?>
                                             </td>
 
                                             <td class="<?php if($product->meta_description == null): ?> text-center <?php endif; ?>">
-                                                <?php echo e($product->meta_description ?? '—'); ?>
+                                                <?php if(LaravelLocalization::getCurrentLocale() == 'en' && $product->meta_description == null || 
+                                                    (LaravelLocalization::getCurrentLocale() == 'ar' && $product->meta_description == null)): ?>
+                                                    —
+                                                <?php else: ?>
+                                                    <?php echo e($product->meta_description ?? '—'); ?>
 
+                                                <?php endif; ?>
                                             </td>
                                             
                                             <td>

@@ -76,15 +76,30 @@
                                             </td>
 
                                             <td class="@if($product->keywords == null) text-center @endif">
-                                                {{ $product->keywords ?? '—' }}
+                                                @if(LaravelLocalization::getCurrentLocale() == 'en' && $product->keywords == null || 
+                                                    (LaravelLocalization::getCurrentLocale() == 'ar' && $product->keywords == null))
+                                                    —
+                                                @else
+                                                    {{ $product->keywords ?? '—' }}
+                                                @endif
                                             </td>
 
                                             <td class="@if($product->description == null) text-center @endif">
-                                                {{ Str::words($product->description, 7, '...') ?? '—' }}
+                                                @if(LaravelLocalization::getCurrentLocale() == 'en' && $product->description == null || 
+                                                    (LaravelLocalization::getCurrentLocale() == 'ar' && $product->description == null))
+                                                    —
+                                                @else
+                                                    {{ Str::words($product->description, 7, '...') ?? '—' }}
+                                                @endif
                                             </td>
 
                                             <td class="@if($product->meta_description == null) text-center @endif">
-                                                {{ $product->meta_description ?? '—' }}
+                                                @if(LaravelLocalization::getCurrentLocale() == 'en' && $product->meta_description == null || 
+                                                    (LaravelLocalization::getCurrentLocale() == 'ar' && $product->meta_description == null))
+                                                    —
+                                                @else
+                                                    {{ $product->meta_description ?? '—' }}
+                                                @endif
                                             </td>
                                             
                                             <td>

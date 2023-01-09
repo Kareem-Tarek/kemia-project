@@ -132,7 +132,7 @@
                                     <label class="form-label" for="validationDefault08">{{ __('product.product_category') }} <span class="text-danger">*</span></label>
                                     <select name="category_id" class="form-control" value="{{ old('category_id') }}">
                                         <option value="" selected>No category selected.</option>
-                                        @foreach($product_category as $p_cat)
+                                        @forelse($product_category as $p_cat)
                                             <option value="{{ $p_cat->id }}">
                                                 @if($p_cat->parent_id == null)
                                                     {{ $p_cat->name }}
@@ -140,7 +140,8 @@
                                                     ({{ $p_cat->name }}) &RightArrow; {{ $p_cat->subCategory->name }}
                                                 @endif
                                             </option>
-                                        @endforeach
+                                            @empty
+                                        @endforelse
                                     </select>
                                     <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                     <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>

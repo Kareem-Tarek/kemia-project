@@ -76,9 +76,10 @@
                                     <label class="form-label">{{ __('category.sub_category_of') }} <span class="text-danger">*</span></label>
                                         <select name="parent_id" class="form-control" value="{{Request::old('parent_id') ? Request::old('parent_id') : $category->parent_id}}" required>
                                             <option value="" selected>No sub-category selected.</option>
-                                            @foreach($categories as $cat)
+                                            @forelse($categories as $cat)
                                                 <option value="{{ $cat->id }}" {{ $cat->id == $category->parent_id ? 'selected'  : '' }}>{{ $cat->name }}</option>
-                                            @endforeach
+                                                @empty
+                                            @endforelse
                                         </select>
                                     <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                     <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>

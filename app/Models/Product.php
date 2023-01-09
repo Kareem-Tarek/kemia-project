@@ -14,7 +14,7 @@ class Product extends Model
 
     protected $guarded = [];
 
-    public $translatable = ['name'];
+    public $translatable = ['title', 'description'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

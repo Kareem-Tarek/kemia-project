@@ -52,10 +52,14 @@ class ProductController extends Controller
         // $pic_name = $request->file('image')->getClientOriginalName();
 
         $product                   = new Product;
-        $product->title            = $request->title;
+        $product->setTranslation('title', 'en', $request->title_en)
+            ->setTranslation('title', 'ar', $request->title_ar);
+
+        $product->setTranslation('description', 'en', $request->description_en)
+            ->setTranslation('description', 'ar', $request->description_ar);
+
         $product->price            = $request->price;
         $product->discount         = $request->discount;
-        $product->description      = $request->description;
         $product->meta_description = $request->meta_description;
         $product->keywords         = $request->keywords;
         // $product->image            = '/assets/images/custom_images/'.$pic_name;
@@ -85,8 +89,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product= Product::Find($id);
-        return view('dashboard.products.edit', compact('product'));
+        $product_edit = Product::FindOrFail($id);
+        $product_category = Category::get();
+
+        return view('dashboard.products.edit', compact('product_edit', 'product_category'));
     }
 
     /**
@@ -98,7 +104,23 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product                   = Product::FindOrFail($id);
+        $product->setTranslation('title', 'en', $request->title_en)
+            ->setTranslation('title', 'ar', $request->title_ar);
+
+        $product->setTranslation('description', 'en', $request->description_en)
+            ->setTranslation('description', 'ar', $request->description_ar);
+
+        $product->price            = $request->price;
+        $product->discount         = $request->discount;
+        $product->meta_description = $request->meta_description;
+        $product->keywords         = $request->keywords;
+        // $product->image            = '/assets/images/custom_images/'.$pic_name;
+        $product->category_id      = $request->category_id;
+        $product->save();
+
+        return redirect()->route('products.index')
+            ->with('success', __('master.messages_edit'));
     }
 
     /**

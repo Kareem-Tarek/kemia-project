@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    {{ __('product.product') ?? 'Product translation error' }}
+    {{ __('product.product') }}
 @endsection
 
 {{-- @push('css')

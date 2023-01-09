@@ -115,7 +115,7 @@
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label" for="validationCustom03">{{ __('product.price') }} <span class="text-danger">*</span></label>
                                     <input class="form-control" id="validationCustom03" type="number" name="price"
-                                        placeholder="Price in EGP" required="" value="{{ old('price') }}" 
+                                        placeholder="Price in EGP" required="" value="{{ Request::old('price') ? Request::old('price') : $product->price }}" 
                                         onkeyup="$('#gain_value_final_price_product_create').val($(this).val() - ( $(this).val() * $('#discount').val() ) );"/>
                                     <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                     <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>

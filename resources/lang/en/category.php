@@ -7,6 +7,8 @@ return  [
     'edit_category'                 => 'Edit Category',
     'name'                          => 'Name',
     'status'                        => 'Status',
+    'available'                     => 'Available',
+    'unavailable'                   => 'Unavailable',
     'categories'                    => 'Categories',  //for dashboard "home" blade
     'sub_categories'                => 'Sub-categories',  //for dashboard "home" blade
     'parent_id'                     => 'Sub-category of',  //for "index" blade

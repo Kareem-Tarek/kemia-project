@@ -39,8 +39,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::whereNull('parent_id')->get();
-        return view('dashboard.categories.create', compact('categories'));
+        $categories      = Category::whereNull('parent_id')->get();
+        $category_status = Category::get();;
+        return view('dashboard.categories.create', compact('categories' , 'category_status'));
     }
     /**
      * Store a newly created resource in storage.
@@ -60,6 +61,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category->setTranslation('name', 'en', $request->name_en)
             ->setTranslation('name', 'ar', $request->name_ar);
+        $category->status    = $request->status;
         $category->parent_id = $request->parent_id;
         $category->save();
 
@@ -100,9 +102,8 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         // $category_old_name = Category::find($id)->name;
-        $category = Category::findOrFail($id);
-        $category->setTranslation('name', 'en', $request->name_en)
-            ->setTranslation('name', 'ar', $request->name_ar);
+        $category            = Category::findOrFail($id);
+        $category->status    = $request->status;
         $category->parent_id = $request->parent_id;
         $category->save();
         

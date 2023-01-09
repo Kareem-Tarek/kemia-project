@@ -7,6 +7,8 @@ return  [
     'edit_category'                 => 'تعديل القسم',
     'name'                          => 'الاسم',
     'status'                        => 'الحالة',
+    'available'                     => 'متاح',
+    'unavailable'                   => 'غير متاح',
     'categories'                    => 'الأقسام',  //for dashboard "home" blade
     'sub_categories'                => 'تصنيف فرعي للأقسام',  //for dashboard "home" blade
     'parent_id'                     => 'أقسام فرعية من', //for "index" blade

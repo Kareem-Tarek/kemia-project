@@ -6,11 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 // use App\Http\Requests\Category\CategoryRequest;
 use App\Models\Category;
-use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
+
 
 class CategoryController extends Controller
 {

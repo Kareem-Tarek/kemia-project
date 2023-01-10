@@ -89,7 +89,7 @@
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label"><?php echo e(__('category.sub_category_of')); ?> <span class="text-danger">*</span></label>
                                         <select name="parent_id" class="form-control" value="<?php echo e(Request::old('parent_id') ? Request::old('parent_id') : $category->parent_id); ?>" required>
-                                            <option value="" selected>No sub-category selected.</option>
+                                            <option value="" selected><?php echo e(__('category.select_subcategory')); ?></option>
                                             <?php $__empty_1 = true; $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                                 <option value="<?php echo e($cat->id); ?>" <?php echo e($cat->id == $category->parent_id ? 'selected'  : ''); ?>><?php echo e($cat->name); ?></option>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
@@ -100,7 +100,7 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-primary" type="submit">حفظ</button>
+                            <button class="btn btn-primary" type="submit"><?php echo e(__('master.edit')); ?></button>
                         </form>
                     </div>
                 </div>

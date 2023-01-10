@@ -99,7 +99,7 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-primary" type="submit">حفظ</button>
+                            <button class="btn btn-primary" type="submit">{{ __('master.save') }}</button>
                         </form>
                     </div>
                 </div>

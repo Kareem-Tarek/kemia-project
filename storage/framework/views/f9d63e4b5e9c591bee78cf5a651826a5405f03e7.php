@@ -100,7 +100,7 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-primary" type="submit"><?php echo e(__('master.edit')); ?></button>
+                            <button class="btn btn-primary" type="submit"><?php echo e(__('master.save')); ?></button>
                         </form>
                     </div>
                 </div>

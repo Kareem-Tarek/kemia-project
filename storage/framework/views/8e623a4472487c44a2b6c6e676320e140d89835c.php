@@ -83,7 +83,7 @@
                                             </td>
                                         </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                        <div class="alert alert-secondary text-center h5">There are no categories yet! <a href="<?php echo e(route('categories.create')); ?>" class="text-decoration-underline fw-bold text-dark">Please add categories/sub-categories</a> and come back again!</div>
+                                        <div class="alert alert-secondary text-center h5"><?php echo e(__('category.index_forelse_loop_empty_msg_1')); ?> <a href="<?php echo e(route('categories.create')); ?>" class="text-decoration-underline fw-bold text-dark"><?php echo e(__('category.index_forelse_loop_empty_msg_2')); ?></a> <?php echo e(__('category.index_forelse_loop_empty_msg_3')); ?></div>
                                     <?php endif; ?>
                                 </tbody>
                             </table>

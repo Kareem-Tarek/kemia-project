@@ -89,7 +89,7 @@
                                             </td>
                                         </tr>
                                         @empty
-                                        <div class="alert alert-secondary text-center h5">{{ __('category.index_forelse_loop_empty_msg_1') }} <a href="{{ route('categories.create') }}" class="text-decoration-underline fw-bold text-dark">{{ __('category.index_forelse_loop_empty_msg_2') }}</a> {{ __('category.index_forelse_loop_empty_msg_3') }}</div>
+                                        <div class="alert alert-secondary text-center h5">There are no categories yet! <a href="{{ route('categories.create') }}" class="text-decoration-underline fw-bold text-dark">Please add categories/sub-categories</a> and come back again!</div>
                                     @endforelse
                                 </tbody>
                             </table>

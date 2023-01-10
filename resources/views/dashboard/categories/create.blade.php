@@ -68,7 +68,7 @@
                                     <div class="col-md-12 mb-3">
                                         <label class="form-label" for="validationCustom01">{{ __('category.status') }} <span class="text-danger">*</span></label>
                                         <select class="form-control" name="status" id="validationCustom01" value="{{ old('status') }}" required="">
-                                            <option value="" selected>Please select a status.</option>
+                                            <option value="" selected>{{ __('category.select_status') }}</option>
                                             <option value="{{ "available" }}">{{ __('category.available') }}</option>
                                             <option value="{{ "unavailable" }}">{{ __('category.unavailable') }}</option>
                                         </select>

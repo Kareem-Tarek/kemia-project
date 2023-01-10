@@ -9,6 +9,7 @@ return  [
     'status'                        => 'الحالة',
     'available'                     => 'متاح',
     'unavailable'                   => 'غير متاح',
+    'select_status'                 => 'الرجاء تحديد حالة.',
     'categories'                    => 'الأقسام',  //for dashboard "home" blade
     'sub_categories'                => 'تصنيف فرعي للأقسام',  //for dashboard "home" blade
     'parent_id'                     => 'أقسام فرعية من', //for "index" blade

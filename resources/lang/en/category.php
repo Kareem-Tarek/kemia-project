@@ -9,6 +9,7 @@ return  [
     'status'                        => 'Status',
     'available'                     => 'Available',
     'unavailable'                   => 'Unavailable',
+    'select_status'                 => 'Please select a status.',
     'categories'                    => 'Categories',  //for dashboard "home" blade
     'sub_categories'                => 'Sub-categories',  //for dashboard "home" blade
     'parent_id'                     => 'Sub-category of',  //for "index" blade

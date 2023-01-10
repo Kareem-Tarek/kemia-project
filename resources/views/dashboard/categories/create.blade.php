@@ -69,8 +69,8 @@
                                         <label class="form-label" for="validationCustom01">{{ __('category.status') }} <span class="text-danger">*</span></label>
                                         <select class="form-control" name="status" id="validationCustom01" value="{{ old('status') }}" required="">
                                             <option value="" selected>Please select a status.</option>
-                                            <option value="avaialbe">{{ __('category.available') }}</option>
-                                            <option value="unavaialbe">{{ __('category.unavailable') }}</option>
+                                            <option value="{{ "available" }}">{{ __('category.available') }}</option>
+                                            <option value="{{ "unavailable" }}">{{ __('category.unavailable') }}</option>
                                         </select>
                                         <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                         <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>

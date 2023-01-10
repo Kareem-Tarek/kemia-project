@@ -70,8 +70,8 @@
                                         <label class="form-label" for="validationCustom01"><?php echo e(__('category.status')); ?> <span class="text-danger">*</span></label>
                                         <select class="form-control" name="status" id="validationCustom01" value="<?php echo e(old('status')); ?>" required="">
                                             <option value="" selected>Please select a status.</option>
-                                            <option value="avaialbe"><?php echo e(__('category.available')); ?></option>
-                                            <option value="unavaialbe"><?php echo e(__('category.unavailable')); ?></option>
+                                            <option value="<?php echo e("available"); ?>"><?php echo e(__('category.available')); ?></option>
+                                            <option value="<?php echo e("unavailable"); ?>"><?php echo e(__('category.unavailable')); ?></option>
                                         </select>
                                         <div class="valid-feedback"><?php echo e(__('validation.valid_feedback')); ?></div>
                                         <div class="invalid-feedback"><?php echo e(__('validation.invalid_feedback')); ?></div>

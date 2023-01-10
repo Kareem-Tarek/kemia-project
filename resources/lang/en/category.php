@@ -19,6 +19,6 @@ return  [
     'sub_category_of'                => 'Sub-category of',    //for "create" & "edit" blade
     'select_subcategory'             => 'No sub-category selected.',
     'note'                           => 'NOTE:',
-    'category_and_subcategory_note'  => "If (Sub-category of) is null then the (Name) is a main category, and if it's not null then then the (Name) is a sub-category of an already existing main category from the (Name)." ,
+    'category_and_subcategory_note'  => "If (Sub-category of) is null then the (Name) is a main category, and if (Sub-category of) is not null then then the (Name) is a sub-category of an already existing main category from the (Sub-category of)." ,
 
 ];

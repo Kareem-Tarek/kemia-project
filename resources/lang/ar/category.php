@@ -14,6 +14,7 @@ return  [
     'sub_categories'                => 'تصنيف فرعي للأقسام',  //for dashboard "home" blade
     'parent_id'                     => 'أقسام فرعية من', //for "index" blade
     'sub_category_of'               => 'أقسام فرعية من',   //for "create" & "edit" blade
+    'select_subcategory'            => 'لم يتم اختيار فئة فرعية.',
     'note'                          => 'ملحوظة:',
     'category_and_subcategory_note' => "إذا كانت (الفئة الفرعية من) فارغة ، فإن (الاسم) هي فئة رئيسية ، وإذا لم تكن خالية ، فإن (الاسم) هي فئة فرعية من فئة رئيسية موجودة بالفعل من (الاسم)." ,
 ];

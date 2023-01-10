@@ -81,7 +81,7 @@
                                     <div class="col-md-12 mb-3">
                                         <label class="form-label">{{ __('category.sub_category_of') }}</label>
                                             <select name="parent_id" class="form-control" value="{{ old('parent_id') }}">
-                                                <option value="" selected>No sub-category selected.</option>
+                                                <option value="" selected>{{ __('category.select_subcategory') }}</option>
                                                 @forelse($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                     @empty

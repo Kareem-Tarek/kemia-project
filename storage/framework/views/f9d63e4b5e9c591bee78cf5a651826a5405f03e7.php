@@ -76,7 +76,7 @@
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label" for="validationCustom02"><?php echo e(__('category.status')); ?> <span class="text-danger">*</span></label>
                                     <select class="form-control" name="status" id="validationCustom02" value="<?php echo e(Request::old('status') ? Request::old('status') : $category->status); ?>" required="">
-                                        <option value="" selected>Please select a status.</option>
+                                        <option value="" selected><?php echo e(__('category.select_status')); ?></option>
                                         <option value="<?php echo e("available"); ?>" <?php echo e($category->status == "available" ? 'selected'  : ''); ?>><?php echo e(__('category.available')); ?></option>
                                         <option value="<?php echo e("unavailable"); ?>" <?php echo e($category->status == "unavailable" ? 'selected'  : ''); ?>><?php echo e(__('category.unavailable')); ?></option>
                                     </select>

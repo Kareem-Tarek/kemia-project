@@ -88,7 +88,7 @@
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">{{ __('category.sub_category_of') }} <span class="text-danger">*</span></label>
                                         <select name="parent_id" class="form-control" value="{{Request::old('parent_id') ? Request::old('parent_id') : $category->parent_id}}" required>
-                                            <option value="" selected>No sub-category selected.</option>
+                                            <option value="" selected>{{ __('category.select_subcategory') }}</option>
                                             @forelse($categories as $cat)
                                                 <option value="{{ $cat->id }}" {{ $cat->id == $category->parent_id ? 'selected'  : '' }}>{{ $cat->name }}</option>
                                                 @empty

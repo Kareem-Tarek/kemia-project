@@ -39,6 +39,21 @@
                                     <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                 </div>
                             </div>
+
+                            <div class="row g-1">
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label" for="validationDefault07">{{ __('master.status') }}</label>
+                                    <select class="form-select" id="validationDefault07" required="" name="status" value="{{ old('status') }}">
+                                        <option selected="" value="">{{ __('user.select_status') }}</option>
+                                        <option value="{{ "active" }}">{{ __('user.active') }}</option>
+                                        <option value="{{ "inactive" }}" >{{ __('user.inactive') }}</option>
+                                        <option value="{{ "block" }}" >{{ __('user.block') }}</option>
+                                    </select>
+                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                </div>
+                            </div>
+
                             <div class="row g-2">
 
                                 <div class="col-md-6">
@@ -73,23 +88,6 @@
 
                             {{-- <div class="row g-1">
                                 <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="validationDefault06">{{ __('role.role') }}</label>
-                                    <select class="form-select" id="validationDefault06" required="" name="roles_name">
-                                        <option selected="" disabled="" value=""> {{ __('role.role') }}
-                                        </option>
-                                        @foreach ($roles as $role)
-                                            <option {{ old('roles_name') == $role ? 'selected' : '' }}
-                                                value="{{ $role }}  ">{{ $role }}</option>
-                                        @endforeach
-
-                                    </select>
-                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
-                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
-                                </div>
-                            </div> --}}
-
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-3">
                                     <label class="form-label" for="validationDefault08">{{ __('master.view') }}</label>
                                     <select class="form-select" id="validationDefault08" required="" name="view">
                                         <option selected="" disabled="" value=""> {{ __('master.view') }}</option>
@@ -99,7 +97,7 @@
                                     <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                     <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="row g-1">
                                 <div class="col-md-12 mb-3">

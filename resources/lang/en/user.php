@@ -9,4 +9,8 @@ return [
     'deleted_users'                  => 'Deleted Users',
     'permanent_delete'               => 'Are you sure you want to permanently delete?',
     'empty_deleted_foresle_msg'      => 'There are no users deleted yet!',
+    'active'                         => 'Active',
+    'inactive'                       => 'Inactive',
+    'block'                          => 'Block',
+    'select_status'                  => 'Select status',
 ];

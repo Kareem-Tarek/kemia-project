@@ -7,7 +7,6 @@ return  [
     'processes'     => 'Processes',
     'logout'        => 'Log Out',
     'data'          => 'Data',
-    'status'        => 'Status',
     'image'         => 'Image',
     'list'          => 'Main Dashboard List',
     'email_mobile'  => 'Email Or Mobile',

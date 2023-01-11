@@ -9,4 +9,9 @@ return [
     'user_edit'                     => 'تعديل مستخدم',
     'deleted_users'                 => 'المستخدمون المحذوفون',
     'empty_deleted_foresle_msg'     => 'لا يوجد مستخدم تم حذفه حتى الآن!',
+    'active'                        => 'نشط',
+    'inactive'                      => 'غير نشط',
+    'block'                         => 'محظور',
+    'select_status'                 => 'اختار الحالة',
+
 ];

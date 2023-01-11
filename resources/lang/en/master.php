@@ -10,9 +10,7 @@ return  [
     'status'        => 'Status',
     'image'         => 'Image',
     'list'          => 'Main Dashboard List',
-
     'email_mobile'  => 'Email Or Mobile',
-
     'null'          => 'NULL',
 
     'name'                  => 'Name',
@@ -51,6 +49,9 @@ return  [
     'birth'             => 'Date Of Birth',
     'occupation'        => 'Occupation',
     'comment'           => 'Comment',
+    'deleted'           => 'Deleted',
+    'permanent_delete'  => 'Permanent Delete',
+    'restore'           => 'Restore',
 
     // Start Category
     'add_cat'           => 'Add Category',
@@ -153,15 +154,18 @@ return  [
     'save'      => 'Save',
     'edit'      => 'Edit',
     'delete'    => 'Delete',
-    'close' => 'Close',
-    'remove' => 'Remove',
-    'add' => 'Add',
+    'close'     => 'Close',
+    'remove'    => 'Remove',
+    'add'       => 'Add',
 
 
     // messages
-    'messages_save'     => 'Success Save',
-    'messages_edit'     => 'Success Update',
-    'messages_delete'   => 'Success Delete',
+    'messages_save'              => 'Success Save',
+    'messages_edit'              => 'Success Update',
+    'messages_delete'            => 'Success Delete',
+    'messages_permanent_delete'  => 'Permanently deleted successfully!',
+    'messages_restore'           => 'Success restore',
+    'messages_subCategory_error' => 'Please delete sub-category first!',
 
 
 

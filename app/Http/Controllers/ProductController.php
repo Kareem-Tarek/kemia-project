@@ -24,7 +24,9 @@ class ProductController extends Controller
     public function index()
     {
         $all_products = Product::get();
-        return view('dashboard.products.index', compact('all_products'));
+        $product_category = Category::get();
+
+        return view('dashboard.products.index', compact('all_products', 'product_category'));
     }
 
     /**

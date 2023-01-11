@@ -76,8 +76,13 @@
                             </a>
                             <ul class="nav-submenu menu-content" style="display: <?php echo e(prefixBlock('categories')); ?>;">
                                 <li><a href="<?php echo e(route('categories.index')); ?>" class="<?php echo e(routeActive('categories.index')); ?>"><?php echo e(__('category.category_list')); ?></a></li>
+
                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('category-create')): ?>
                                     <li><a href="<?php echo e(route('categories.create')); ?>" class="<?php echo e(routeActive('categories.create')); ?>"><?php echo e(__('category.add_category')); ?></a></li>
+                                <?php endif; ?>
+
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('category-delete')): ?>
+                                    <li><a href="<?php echo e(route('categories.delete')); ?>" class="<?php echo e(routeActive('categories.delete')); ?>"><?php echo e(__('master.deleted')); ?></a></li>
                                 <?php endif; ?>
                             </ul>
                         </li>

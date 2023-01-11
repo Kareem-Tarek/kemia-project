@@ -39,7 +39,6 @@
 
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade mt-4 <?php if(LaravelLocalization::getCurrentLocale() == 'en'): ?> show active <?php endif; ?>" id="en" role="tabpanel" aria-labelledby="en-tab">
-
                                         <div class="row g-1">
                                             <div class="col-md-12 mb-3">
                                                 <label class="form-label" for="validationCustom01"><?php echo e(__('product.title')); ?> <span class="text-danger">*</span></label>
@@ -59,11 +58,9 @@
                                                 <div class="invalid-feedback"><?php echo e(__('validation.invalid_feedback')); ?></div>
                                             </div>
                                         </div>
-
                                 </div>
 
                                 <div class="tab-pane fade mt-4 <?php if(LaravelLocalization::getCurrentLocale() == 'ar'): ?> show active <?php endif; ?>" id="ar" role="tabpanel" aria-labelledby="ar-tab">
-
                                         <div class="row g-1">
                                             <div class="col-md-12 mb-3">
                                                 <label class="form-label" for="validationCustom01"><?php echo e(__('product.title')); ?> <span class="text-danger">*</span></label>
@@ -136,7 +133,7 @@
                                     <label class="form-label" for="validationDefault08"><?php echo e(__('product.product_category')); ?> <span class="text-danger">*</span></label>
                                     <select name="category_id" class="form-control" value="<?php echo e(old('category_id')); ?>">
                                         <option value="" selected>No category selected.</option>
-                                        <?php $__currentLoopData = $product_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p_cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php $__empty_1 = true; $__currentLoopData = $product_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p_cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                             <option value="<?php echo e($p_cat->id); ?>">
                                                 <?php if($p_cat->parent_id == null): ?>
                                                     <?php echo e($p_cat->name); ?>
@@ -146,7 +143,8 @@
 
                                                 <?php endif; ?>
                                             </option>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                        <?php endif; ?>
                                     </select>
                                     <div class="valid-feedback"><?php echo e(__('validation.valid_feedback')); ?></div>
                                     <div class="invalid-feedback"><?php echo e(__('validation.invalid_feedback')); ?></div>

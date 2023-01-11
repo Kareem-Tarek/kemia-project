@@ -14,7 +14,7 @@ return  [
 
     'email_mobile'              => 'البريد الالكتروني او رقم الهاتف',
 
-    'null'                      => 'لا شيء' ,
+    'null'                      => 'لا شيء',
 
     'name'                      => 'الاسم',
     'arabic'                    => 'بالانجليزية',
@@ -31,22 +31,26 @@ return  [
     'menu'                      => 'القائمه',
     'note'                      => 'ملاحظه',
     'url'                       => 'الرابط',
-    'create_at'                 => 'تاريخ الانضمام' ,
+    'create_at'                 => 'تاريخ الانضمام',
     'view'                      => 'ظهور',
     'subject'                   => 'الموضوع',
     'message'                   => 'الرساله',
 
-    'login_error'               =>'كلمه المرور او البريد الالكتروني غير صحيح',
+    'login_error'               => 'كلمه المرور او البريد الالكتروني غير صحيح',
 
-    'phone'     => 'رقم الهاتف',
-    'mobile'     => 'رقم الهاتف',
-    'password'  => 'كلمة المرور',
-    'email'     => 'البريد الالكتروني',
-    'create_by' => 'التفعيل بواسطه',
+    'phone'             => 'رقم الهاتف',
+    'mobile'            => 'رقم الهاتف',
+    'password'          => 'كلمة المرور',
+    'email'             => 'البريد الالكتروني',
+    'create_by'         => 'التفعيل بواسطه',
     'address'           => 'العنوان',
     'birth'             => 'تاريخ الميلاد',
     'occupation'        => 'الوظيفه',
     'comment'           => 'تعليق',
+    'deleted'           => 'محذوف',
+    'permanent_delete'  => 'حذف دائم',
+    'restore'           => 'استرجع',
+
 
 
     // Category
@@ -145,17 +149,20 @@ return  [
     // End Sro
 
     // Btn
-    'save' => 'حفظ',
-    'edit' => 'تعديل',
-    'delete' => 'حذف',
-    'close' => 'اغلاق',
-    'remove' => 'حذف',
-    'add' => 'اضافة',
+    'save'      => 'حفظ',
+    'edit'      => 'تعديل',
+    'delete'    => 'حذف',
+    'close'     => 'اغلاق',
+    'remove'    => 'حذف',
+    'add'       => 'اضافة',
 
     // messages
-    'messages_save' => 'تم الحفظ بنجاح',
-    'messages_edit' => 'تم التعديل بنجاح',
-    'messages_delete' => 'تم الحذف بنجاح',
-    'messages_delete' => 'تم الحذف بنجاح',
+    'messages_save'              => 'تم الحفظ بنجاح',
+    'messages_edit'              => 'تم التعديل بنجاح',
+    'messages_delete'            => 'تم الحذف بنجاح',
+    'messages_permanent_delete'  => 'تم الحذف نهائيًا بنجاح!',
+    'messages_restore'           => 'تمت استعادته بنجاح',
+    'messages_subCategory_error' => 'الرجاء حذف الفئة الفرعية أولا!',
+
 
 ];

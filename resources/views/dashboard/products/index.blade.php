@@ -106,7 +106,12 @@
                                                 @if($product->category->parent_id == null)
                                                     {{ $product->category->name }}
                                                 @else
-                                                    ({{ $product->category->name }}) &RightArrow; {{ $product->category->parent_id ?? __('master.ull') }}
+                                                    ({{ $product->category->name }}) &RightArrow; {{ $product->category->parent_id ?? __('master.null') }}
+
+                                                    {{-- @if($product_category->id == $product->category_id)
+                                                    @else
+                                                        {{ __('master.null') }}
+                                                    @endif --}}
                                                 @endif
                                             </td>
                                             <td>

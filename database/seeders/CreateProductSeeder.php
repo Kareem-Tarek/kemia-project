@@ -18,8 +18,8 @@ class CreateProductSeeder extends Seeder
         $product = Product::create([  // ID = 1
             'title'            => 'Galaxy Note 5',
             'description'      => 'Samsung.',
-            'meta_description' => 'Black, made in vietnam.',
-            'keywords'         => 'mobile, phone, portable device',
+            'meta_description' => json_encode(['en' => 'Black, made in vietnam.' , 'ar' => 'أسود, صنع في فيتنام.']),
+            'keywords'         => json_encode(['en' => 'mobile, phone, portable device' , 'ar' => 'موبايل, محمول, جهاز محمول.']),
             'price'            => '5000',
             'discount'         => '0.07',
             // 'image'            => '/assets/images/custom_images/note5.jfif',

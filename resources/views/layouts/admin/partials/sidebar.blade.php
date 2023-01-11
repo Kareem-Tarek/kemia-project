@@ -75,8 +75,13 @@
                             </a>
                             <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('categories') }};">
                                 <li><a href="{{ route('categories.index')}}" class="{{ routeActive('categories.index') }}">{{ __('category.category_list') }}</a></li>
+
                                 @can('category-create')
                                     <li><a href="{{ route('categories.create') }}" class="{{ routeActive('categories.create') }}">{{ __('category.add_category') }}</a></li>
+                                @endcan
+
+                                @can('category-delete')
+                                    <li><a href="{{ route('categories.delete')}}" class="{{ routeActive('categories.delete') }}">{{ __('master.deleted') }}</a></li>
                                 @endcan
                             </ul>
                         </li>

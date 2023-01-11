@@ -28,7 +28,12 @@ Route::group([
         /** End route roles **/
 
         /** Start route categories **/
-        Route::resource('categories', CategoryController::class)->except(['show']); 
+        Route::resource('categories', CategoryController::class)->except(['show']);
+
+        Route::get('categories/delete', [CategoryController::class, 'delete'])->name('categories.delete');
+        Route::delete('categories/forceDelete/{id}/', [CategoryController::class, 'forceDelete'])->name('categories.forceDelete');  
+        Route::get('categories/restore/{id}/', [CategoryController::class, 'restore'])->name('categories.restore'); 
+
         /** End route categories **/
 
         /** Start route products **/

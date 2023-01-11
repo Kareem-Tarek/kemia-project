@@ -65,17 +65,17 @@
                                             <td>
                                                 <div style="display: flex;">
                                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('category-edit')): ?>
-                                                        <a class="btn btn-outline-primary-2x" style="margin:0 20px;"
-                                                            href="<?php echo e(route('categories.edit', $category->id)); ?>"><?php echo e(__('master.edit')); ?></a>
+                                                        <a class="btn btn-outline-success-2x" style="margin:0 20px;"
+                                                            href="<?php echo e(route('categories.restore', $category->id)); ?>"><?php echo e(__('master.restore')); ?></a>
                                                     <?php endif; ?>
 
                                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('category-delete')): ?>
-                                                        <form action="<?php echo e(route('categories.destroy', $category->id)); ?>" method="post">
+                                                        <form action="<?php echo e(route('categories.forceDelete', $category->id)); ?>" method="post">
                                                             <?php echo csrf_field(); ?>
                                                             <?php echo method_field('delete'); ?>
                                                             <input style="border-color: #d22d3d;"
                                                                 class="btn btn-outline-danger-2x"
-                                                                value="<?php echo e(__('master.delete')); ?>" type="submit">
+                                                                value="<?php echo e(__('master.permanent_delete')); ?>" type="submit">
 
                                                         </form>
                                                     <?php endif; ?>
@@ -83,7 +83,7 @@
                                             </td>
                                         </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                        <div class="alert alert-secondary text-center h5"><?php echo e(__('category.index_forelse_loop_empty_msg_1')); ?> <a href="<?php echo e(route('categories.create')); ?>" class="text-decoration-underline fw-bold text-dark"><?php echo e(__('category.index_forelse_loop_empty_msg_2')); ?></a> <?php echo e(__('category.index_forelse_loop_empty_msg_3')); ?></div>
+                                        <div class="alert alert-secondary text-center h5">There are no categories yet! <a href="<?php echo e(route('categories.create')); ?>" class="text-decoration-underline fw-bold text-dark">Please add categories/sub-categories</a> and come back again!</div>
                                     <?php endif; ?>
                                 </tbody>
                             </table>
@@ -101,4 +101,4 @@
     <?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laragon\www\kemia-project\resources\views/dashboard/categories/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laragon\www\kemia-project\resources\views/dashboard/categories/delete.blade.php ENDPATH**/ ?>

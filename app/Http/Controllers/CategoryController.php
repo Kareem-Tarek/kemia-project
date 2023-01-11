@@ -37,7 +37,7 @@ class CategoryController extends Controller
     {
         $categories      = Category::whereNull('parent_id')->get();
         $category_status = Category::get();;
-        return view('dashboard.categories.create', compact('categories' , 'category_status'));
+        return view('dashboard.categories.create', compact('categories', 'category_status'));
     }
     /**
      * Store a newly created resource in storage.
@@ -86,7 +86,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $categories = Category::whereNull('parent_id')->get();
-        return view('dashboard.categories.edit', compact('category','categories'));
+        return view('dashboard.categories.edit', compact('category', 'categories'));
     }
     /**
      * Update the specified resource in storage.
@@ -102,7 +102,7 @@ class CategoryController extends Controller
         $category->status    = $request->status;
         $category->parent_id = $request->parent_id;
         $category->save();
-        
+
         // return view('dashboard.categories.index',compact('categories'))
         // ->with(['category_updated' => "The category name ($category_old_name) has been changed to "."($request->name)"." !"]);
         return redirect()->back()
@@ -116,17 +116,42 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id)->parentCategory()->count();
-        // return $category;
-        if($category == 0){
+        $category       = Category::findOrFail($id);
+        $category_count = Category::findOrFail($id)->parentCategory()->count();
+
+        if ($category->parent_id != null) {
             $category->delete();
             return redirect()->back()
-            ->with('success', __('master.messages_delete'));
-        }
-        else{
+                ->with('success', __('master.messages_delete'));
+        } elseif ($category->parent_id == null && $category_count == 0) {
+            $category->delete();
             return redirect()->back()
-            ->with('error', 'Please delete sub-category first!');
+                ->with('success', __('master.messages_delete'));
+        } elseif ($category_count > 0) {
+            return redirect()->back()
+                ->with('error', 'Please delete sub-category first!');
         }
     }
 
+    public function delete()
+    {
+        $categories = Category::orderBy('created_at', 'asc')->onlyTrashed()->paginate(30);
+
+        return view('dashboard.categories.delete', compact('categories'));
+    }
+
+    public function restore($id)
+    {
+        Category::withTrashed()->find($id)->restore();
+        $categories = Category::findOrFail($id);
+        return redirect()->route('categories.delete')
+            ->with('success', __('master.messages_restore'));
+    }
+
+    public function forceDelete($id)
+    {
+        Category::findOrFail($id)->forceDelete();
+        return redirect()->route('categories.delete')
+            ->with('success', __('master.messages_permanent_delete'));
+    }
 }

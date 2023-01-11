@@ -71,17 +71,17 @@
                                             <td>
                                                 <div style="display: flex;">
                                                     @can('category-edit')
-                                                        <a class="btn btn-outline-primary-2x" style="margin:0 20px;"
-                                                            href="{{ route('categories.edit', $category->id) }}">{{ __('master.edit') }}</a>
+                                                        <a class="btn btn-outline-success-2x" style="margin:0 20px;"
+                                                            href="{{ route('categories.restore', $category->id) }}">{{ __('master.restore') }}</a>
                                                     @endcan
 
                                                     @can('category-delete')
-                                                        <form action="{{ route('categories.destroy', $category->id) }}" method="post">
+                                                        <form action="{{ route('categories.forceDelete', $category->id) }}" method="post">
                                                             @csrf
                                                             @method('delete')
                                                             <input style="border-color: #d22d3d;"
                                                                 class="btn btn-outline-danger-2x"
-                                                                value="{{ __('master.delete') }}" type="submit">
+                                                                value="{{ __('master.permanent_delete') }}" type="submit">
 
                                                         </form>
                                                     @endcan

@@ -67,12 +67,26 @@
 
                                 <div class="row g-1">
                                     <div class="col-md-12 mb-3">
+                                        <label class="form-label" for="validationCustom01"><?php echo e(__('category.status')); ?> <span class="text-danger">*</span></label>
+                                        <select class="form-control" name="status" id="validationCustom01" value="<?php echo e(old('status')); ?>" required="">
+                                            <option value="" selected><?php echo e(__('category.select_status')); ?></option>
+                                            <option value="<?php echo e("available"); ?>"><?php echo e(__('category.available')); ?></option>
+                                            <option value="<?php echo e("unavailable"); ?>"><?php echo e(__('category.unavailable')); ?></option>
+                                        </select>
+                                        <div class="valid-feedback"><?php echo e(__('validation.valid_feedback')); ?></div>
+                                        <div class="invalid-feedback"><?php echo e(__('validation.invalid_feedback')); ?></div>
+                                    </div>
+                                </div>
+
+                                <div class="row g-1">
+                                    <div class="col-md-12 mb-3">
                                         <label class="form-label"><?php echo e(__('category.sub_category_of')); ?></label>
                                             <select name="parent_id" class="form-control" value="<?php echo e(old('parent_id')); ?>">
-                                                <option value="" selected>No sub-category selected.</option>
-                                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="" selected><?php echo e(__('category.select_subcategory')); ?></option>
+                                                <?php $__empty_1 = true; $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                                     <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                                <?php endif; ?>
                                             </select>
                                         <div class="valid-feedback"><?php echo e(__('validation.valid_feedback')); ?></div>
                                         <div class="invalid-feedback"><?php echo e(__('validation.invalid_feedback')); ?></div>

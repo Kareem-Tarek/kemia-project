@@ -24,7 +24,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <h5><?php echo e(__('master.data')); ?></h5>
+                        <h5><?php echo e(__('user.user')); ?></h5>
                     </div>
                     <div class="card-body">
                         <form class="needs-validation" novalidate="" method="post" action="<?php echo e(route('users.store')); ?>"
@@ -40,12 +40,27 @@
                                     <div class="invalid-feedback"><?php echo e(__('validation.invalid_feedback')); ?></div>
                                 </div>
                             </div>
+
+                            <div class="row g-1">
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label" for="validationDefault07"><?php echo e(__('master.status')); ?></label>
+                                    <select class="form-select" id="validationDefault07" required="" name="status" value="<?php echo e(old('status')); ?>">
+                                        <option selected="" value=""><?php echo e(__('user.select_status')); ?></option>
+                                        <option value="<?php echo e("active"); ?>"><?php echo e(__('user.active')); ?></option>
+                                        <option value="<?php echo e("inactive"); ?>" ><?php echo e(__('user.inactive')); ?></option>
+                                        <option value="<?php echo e("block"); ?>" ><?php echo e(__('user.block')); ?></option>
+                                    </select>
+                                    <div class="valid-feedback"><?php echo e(__('validation.valid_feedback')); ?></div>
+                                    <div class="invalid-feedback"><?php echo e(__('validation.invalid_feedback')); ?></div>
+                                </div>
+                            </div>
+
                             <div class="row g-2">
 
                                 <div class="col-md-6">
                                     <label class="form-label" for="validationCustom03"><?php echo e(__('master.mobile')); ?></label>
                                     <input class="form-control" id="validationCustom03" type="text" name="mobile"
-                                        placeholder="رقم الهاتف" required="" value="<?php echo e(old('mobile')); ?>" />
+                                        placeholder="ex: 01000000001" required="" value="<?php echo e(old('mobile')); ?>" />
                                     <div class="valid-feedback"><?php echo e(__('validation.valid_feedback')); ?></div>
                                     <div class="invalid-feedback"><?php echo e(__('validation.invalid_feedback')); ?></div>
                                 </div>
@@ -73,19 +88,6 @@
                             </div>
 
                             
-
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="validationDefault08"><?php echo e(__('master.view')); ?></label>
-                                    <select class="form-select" id="validationDefault08" required="" name="view">
-                                        <option selected="" disabled="" value=""> <?php echo e(__('master.view')); ?></option>
-                                        <option value="yes">Yes</option>
-                                        <option value="no" >No</option>
-                                    </select>
-                                    <div class="valid-feedback"><?php echo e(__('validation.valid_feedback')); ?></div>
-                                    <div class="invalid-feedback"><?php echo e(__('validation.invalid_feedback')); ?></div>
-                                </div>
-                            </div>
 
                             <div class="row g-1">
                                 <div class="col-md-12 mb-3">

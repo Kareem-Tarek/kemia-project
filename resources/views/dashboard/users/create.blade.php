@@ -23,7 +23,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <h5>{{ __('master.data') }}</h5>
+                        <h5>{{ __('user.user') }}</h5>
                     </div>
                     <div class="card-body">
                         <form class="needs-validation" novalidate="" method="post" action="{{ route('users.store') }}"
@@ -59,7 +59,7 @@
                                 <div class="col-md-6">
                                     <label class="form-label" for="validationCustom03">{{ __('master.mobile') }}</label>
                                     <input class="form-control" id="validationCustom03" type="text" name="mobile"
-                                        placeholder="رقم الهاتف" required="" value="{{ old('mobile') }}" />
+                                        placeholder="ex: 01000000001" required="" value="{{ old('mobile') }}" />
                                     <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                     <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                 </div>

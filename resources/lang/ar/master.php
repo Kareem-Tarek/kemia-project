@@ -54,14 +54,14 @@ return  [
 
 
     // Category
-    'add_cat' => 'اضافة قسم',
-    'cat' => 'القسم',
-    'cat_list' => 'الاقسام',
-    'edit_cat' => 'تعديل القسم',
-    'category_ar'  => 'اسم القسم بالعربية',
-    'category_en'  => 'اسم القسم بالانجليزيه',
-    'category_in_active'    => 'الاقسام الغير مفعله',
-    'messages_Fail_delete'    => 'الاقسام الغير مفعله',
+    'add_cat' => 'اضافة فئة',
+    'cat' => 'الفئة',
+    'cat_list' => 'الفئات',
+    'edit_cat' => 'تعديل الفئة',
+    'category_ar'  => 'اسم الفئة بالعربية',
+    'category_en'  => 'اسم الفئة بالانجليزيه',
+    'category_in_active'    => 'الفئات الغير مفعله',
+    'messages_Fail_delete'    => 'الفئات الغير مفعله',
     // End
 
     // Start Tag

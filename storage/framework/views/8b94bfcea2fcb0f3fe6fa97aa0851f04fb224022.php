@@ -78,9 +78,9 @@
                                                                 value="<?php echo e(__('master.permanent_delete')); ?>" type="submit"
                                                                 onclick="
                                                                 <?php if($category->parent_id == null): ?> 
-                                                                    return confirm('Are you sure that you want to permenantly delete this category?\n<?php echo e('('.$category->name.')'); ?>');
+                                                                    return confirm('<?php echo e(__('category.category_delete_confirm_msg')); ?> <?php echo e('('.$category->name.')'); ?>\n<?php echo e(__('master.note')); ?> <?php echo e(__('category.sub-category_cascade_warning')); ?>');
                                                                 <?php else: ?>  
-                                                                    return confirm('Are you sure that you want to permenantly delete this sub-category?\n<?php echo e('('.$category->name.')'); ?>');
+                                                                    return confirm('<?php echo e(__('category.sub-category_delete_confirm_msg')); ?>\n<?php echo e('('.$category->name.')'); ?>');
                                                                 <?php endif; ?>">
 
                                                         </form>

@@ -84,7 +84,7 @@
                                                                 value="{{ __('master.permanent_delete') }}" type="submit"
                                                                 onclick="
                                                                 @if($category->parent_id == null) 
-                                                                    return confirm('{{__('category.category_delete_confirm_msg') }}\n{{ '('.$category->name.')' }}\n{{ __('master.note') }} {{__('category.sub-category_cascade_warning') }}');
+                                                                    return confirm('{{__('category.category_delete_confirm_msg') }} {{ '('.$category->name.')' }}\n{{ __('master.note') }} {{__('category.sub-category_cascade_warning') }}');
                                                                 @else  
                                                                     return confirm('{{__('category.sub-category_delete_confirm_msg') }}\n{{ '('.$category->name.')' }}');
                                                                 @endif">

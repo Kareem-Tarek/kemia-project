@@ -25,7 +25,7 @@ return  [
     'logo'                  => 'Logo',
     'cover'                 => 'Cover',
     'menu'                  => 'Menu',
-    'note'                  => 'Note',
+    'note'                  => 'Note:',
     'reviews'               => 'Reviews',
     'title'                 => 'Title',
     'create_at'             => 'Join Date',

@@ -20,6 +20,8 @@ class PermissionTableSeeder extends Seeder
             'user-create',
             'user-edit',
             'user-delete',
+            'user-restore',
+            'user-forceDelete',
 
             'role-list',
             'role-create',
@@ -30,11 +32,22 @@ class PermissionTableSeeder extends Seeder
             'category-create',
             'category-edit',
             'category-delete',
+            'category-restore',
+            'category-forceDelete',
 
             'product-list',
             'product-create',
             'product-edit',
             'product-delete',
+            'product-restore',
+            'product-forceDelete',
+
+            'setting-list',
+            'setting-create',
+            'setting-edit',
+            'setting-delete',
+            'setting-restore',
+            'setting-forceDelete',
 
         ];
 

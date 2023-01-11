@@ -1,7 +1,7 @@
 
 
 <?php $__env->startSection('title'); ?>
-    <?php echo e(__('category.category')); ?>
+    <?php echo e(__('category.deleted_categories')); ?>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('css'); ?>
@@ -15,7 +15,7 @@
         <?php $__env->slot('breadcrumb_title'); ?>
             <h3><?php echo e(__('category.category')); ?></h3>
         <?php $__env->endSlot(); ?>
-        <li class="breadcrumb-item active"><?php echo e(__('category.category')); ?></li>
+        <li class="breadcrumb-item active"><?php echo e(__('category.deleted_categories')); ?></li>
     <?php echo $__env->renderComponent(); ?>
 
     
@@ -26,7 +26,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
-                            <table class="table-striped display table-bordered <?php if($categories->count() == 0): ?> d-none <?php endif; ?>   " id="responsive">
+                            <table class="table-striped display table-bordered <?php if($categories->count() == 0): ?> d-none <?php endif; ?>" id="responsive">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -64,18 +64,24 @@
 
                                             <td>
                                                 <div style="display: flex;">
-                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('category-edit')): ?>
+                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('category-restore')): ?>
                                                         <a class="btn btn-outline-success-2x" style="margin:0 20px;"
                                                             href="<?php echo e(route('categories.restore', $category->id)); ?>"><?php echo e(__('master.restore')); ?></a>
                                                     <?php endif; ?>
 
-                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('category-delete')): ?>
+                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('category-forceDelete')): ?>
                                                         <form action="<?php echo e(route('categories.forceDelete', $category->id)); ?>" method="post">
                                                             <?php echo csrf_field(); ?>
                                                             <?php echo method_field('delete'); ?>
                                                             <input style="border-color: #d22d3d;"
                                                                 class="btn btn-outline-danger-2x"
-                                                                value="<?php echo e(__('master.permanent_delete')); ?>" type="submit">
+                                                                value="<?php echo e(__('master.permanent_delete')); ?>" type="submit"
+                                                                onclick="
+                                                                <?php if($category->parent_id == null): ?> 
+                                                                    return confirm('Are you sure that you want to permenantly delete this category?\n<?php echo e('('.$category->name.')'); ?>');
+                                                                <?php else: ?>  
+                                                                    return confirm('Are you sure that you want to permenantly delete this sub-category?\n<?php echo e('('.$category->name.')'); ?>');
+                                                                <?php endif; ?>">
 
                                                         </form>
                                                     <?php endif; ?>
@@ -83,7 +89,7 @@
                                             </td>
                                         </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                        <div class="alert alert-secondary text-center h5">There are no categories yet! <a href="<?php echo e(route('categories.create')); ?>" class="text-decoration-underline fw-bold text-dark">Please add categories/sub-categories</a> and come back again!</div>
+                                        <div class="alert alert-secondary text-center h5"><?php echo e(__('category.empty_deleted_foresle_msg')); ?></div>
                                     <?php endif; ?>
                                 </tbody>
                             </table>

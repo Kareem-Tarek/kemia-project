@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    {{ __('user.user') }}
+    {{ __('user.deleted_users') }}
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
         @slot('breadcrumb_title')
             <h3>{{ __('user.user') }}</h3>
         @endslot
-        <li class="breadcrumb-item active">{{ __('user.user') }}</li>
+        <li class="breadcrumb-item active">{{ __('user.deleted_users') }}</li>
     @endcomponent
 
 
@@ -19,7 +19,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
-                            <table class="table-striped display table-bordered" id="responsive">
+                            <table class="table-striped display table-bordered @if($users->count() == 0) d-none @endif" id="responsive">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -55,22 +55,23 @@
                                             </td>
                                             <td>
                                                 <div style="display: flex;">
-                                                    @can('user-edit')
-                                                        <a class="btn btn-outline-primary-2x" style="margin:0 20px;" href="{{ route('users.edit', $user->id) }}">{{ __('master.edit') }}</a>
+                                                    @can('user-restore')
+                                                        <a class="btn btn-outline-success-2x" style="margin:0 20px;" href="{{ route('users.restore', $user->id) }}">{{ __('master.restore') }}</a>
                                                     @endcan
 
-                                                    @can('user-delete')
-                                                        <form action="{{ route('users.destroy', $user->id) }}" method="post">
+                                                    @can('user-forceDelete')
+                                                        <form action="{{ route('users.forceDelete', $user->id) }}" method="post">
                                                             @csrf
                                                             @method('delete')
-                                                            <input style="border-color: #d22d3d;" class="btn btn-outline-danger-2x" value="{{ __('master.delete') }}" type="submit">
+                                                            <input style="border-color: #d22d3d;" class="btn btn-outline-danger-2x" value="{{ __('master.permanent_delete') }}" type="submit"
+                                                            onclick="return confirm('{{ __('user.permanent_delete')}} ({{ $user->name }})');">
                                                         </form>
                                                     @endcan
                                                 </div>
                                             </td>
                                         </tr>
                                         @empty
-
+                                        <div class="alert alert-secondary text-center h5">{{__('user.empty_deleted_foresle_msg') }}</div>
                                     @endforelse
                                 </tbody>
                             </table>
@@ -80,6 +81,7 @@
             </div>
         </div>
     </div>
+
 
 
     @push('scripts')

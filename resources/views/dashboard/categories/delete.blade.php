@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    {{ __('category.category') }}
+    {{ __('category.deleted_categories') }}
 @endsection
 @push('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
@@ -14,7 +14,7 @@
         @slot('breadcrumb_title')
             <h3>{{ __('category.category') }}</h3>
         @endslot
-        <li class="breadcrumb-item active">{{ __('category.category') }}</li>
+        <li class="breadcrumb-item active">{{ __('category.deleted_categories') }}</li>
     @endcomponent
 
     {{-- @if(session()->has('category_created'))
@@ -33,7 +33,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
-                            <table class="table-striped display table-bordered @if($categories->count() == 0) d-none @endif   " id="responsive">
+                            <table class="table-striped display table-bordered @if($categories->count() == 0) d-none @endif" id="responsive">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -70,18 +70,24 @@
 
                                             <td>
                                                 <div style="display: flex;">
-                                                    @can('category-edit')
+                                                    @can('category-restore')
                                                         <a class="btn btn-outline-success-2x" style="margin:0 20px;"
                                                             href="{{ route('categories.restore', $category->id) }}">{{ __('master.restore') }}</a>
                                                     @endcan
 
-                                                    @can('category-delete')
+                                                    @can('category-forceDelete')
                                                         <form action="{{ route('categories.forceDelete', $category->id) }}" method="post">
                                                             @csrf
                                                             @method('delete')
                                                             <input style="border-color: #d22d3d;"
                                                                 class="btn btn-outline-danger-2x"
-                                                                value="{{ __('master.permanent_delete') }}" type="submit">
+                                                                value="{{ __('master.permanent_delete') }}" type="submit"
+                                                                onclick="
+                                                                @if($category->parent_id == null) 
+                                                                    return confirm('{{__('category.category_delete_confirm_msg') }}\n{{ '('.$category->name.')' }}\n{{ __('master.note') }} {{__('category.sub-category_cascade_warning') }}');
+                                                                @else  
+                                                                    return confirm('{{__('category.sub-category_delete_confirm_msg') }}\n{{ '('.$category->name.')' }}');
+                                                                @endif">
 
                                                         </form>
                                                     @endcan
@@ -89,7 +95,7 @@
                                             </td>
                                         </tr>
                                         @empty
-                                        <div class="alert alert-secondary text-center h5">There are no categories yet! <a href="{{ route('categories.create') }}" class="text-decoration-underline fw-bold text-dark">Please add categories/sub-categories</a> and come back again!</div>
+                                        <div class="alert alert-secondary text-center h5">{{__('category.empty_deleted_foresle_msg') }}</div>
                                     @endforelse
                                 </tbody>
                             </table>

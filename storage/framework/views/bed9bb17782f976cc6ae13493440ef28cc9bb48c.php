@@ -1,7 +1,7 @@
 
 
 <?php $__env->startSection('title'); ?>
-    <?php echo e(__('product.product') ?? 'Product translation error'); ?>
+    <?php echo e(__('product.deleted_products')); ?>
 
 <?php $__env->stopSection(); ?>
 
@@ -12,7 +12,7 @@
         <?php $__env->slot('breadcrumb_title'); ?>
             <h3><?php echo e(__('product.product')); ?></h3>
         <?php $__env->endSlot(); ?>
-        <li class="breadcrumb-item active"><?php echo e(__('product.product')); ?></li>
+        <li class="breadcrumb-item active"><?php echo e(__('product.deleted_products')); ?></li>
     <?php echo $__env->renderComponent(); ?>
 
     
@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
 
-                            <table class="table-striped display table-bordered <?php if($all_products->count() == 0): ?> d-none <?php endif; ?>   " id="responsive">
+                            <table class="table-striped display table-bordered <?php if($all_deleted_products->count() == 0): ?> d-none <?php endif; ?>" id="responsive">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -42,7 +42,7 @@
                                 </thead>
 
                                 <tbody>
-                                    <?php $__empty_1 = true; $__currentLoopData = $all_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                    <?php $__empty_1 = true; $__currentLoopData = $all_deleted_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                         <tr>
                                             <td><?php echo e($loop->iteration); ?></td>
                                             <td><img src="<?php echo e($product->image); ?>" alt="<?php echo e($product->title.'.img'); ?>" width="100"></td>
@@ -98,28 +98,23 @@
                                             </td>
                                             
                                             <td>
-                                                <?php if($product->category->parent_id == null): ?>
-                                                    <?php echo e($product->category->name); ?>
-
-                                                <?php else: ?>
-                                                    (<?php echo e($product->category->name); ?>) &RightArrow; <?php echo e($product->category->parent_id ?? __('master.ull')); ?>
-
-                                                <?php endif; ?>
+                                                N/A
                                             </td>
                                             <td>
                                                 <div style="display: flex;">
-                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('product-edit')): ?>
+                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('product-restore')): ?>
                                                         <a class="btn btn-outline-primary-2x" style="margin:0 20px;"
-                                                            href="<?php echo e(route('products.edit', $product->id)); ?>"><?php echo e(__('master.edit')); ?></a>
+                                                            href="<?php echo e(route('products.restore', $product->id)); ?>"><?php echo e(__('master.restore')); ?></a>
                                                     <?php endif; ?>
 
-                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('product-delete')): ?>
-                                                        <form action="<?php echo e(route('products.destroy', $product->id)); ?>" method="post">
+                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('product-forceDelete')): ?>
+                                                        <form action="<?php echo e(route('products.forceDelete', $product->id)); ?>" method="post">
                                                             <?php echo csrf_field(); ?>
                                                             <?php echo method_field('delete'); ?>
                                                             <input style="border-color: #d22d3d;"
                                                                 class="btn btn-outline-danger-2x"
-                                                                value="<?php echo e(__('master.delete')); ?>" type="submit">
+                                                                value="<?php echo e(__('master.permanent_delete')); ?>" 
+                                                                type="submit" onclick=" return confirm('<?php echo e(__('product.forcedelete_warning')); ?>\n (<?php echo e($product->title); ?>)')">
 
                                                         </form>
                                                     <?php endif; ?>
@@ -127,7 +122,7 @@
                                             </td>
                                         </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                            <div class="alert alert-secondary text-center h5">There are no products yet! <a href="<?php echo e(route('products.create')); ?>" class="text-decoration-underline fw-bold text-dark">Please add products</a> and come back again.</div>
+                                            <div class="alert alert-secondary text-center h5"><?php echo e(__('product.empty_deleted_foresle_msg')); ?></div>
                                     <?php endif; ?>
                                 </tbody>
                             </table>
@@ -145,4 +140,4 @@
     <?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\kemia-project\resources\views/dashboard/products/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laragon\www\kemia-project\resources\views/dashboard/products/delete.blade.php ENDPATH**/ ?>

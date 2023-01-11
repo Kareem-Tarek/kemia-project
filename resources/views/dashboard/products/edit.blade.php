@@ -97,7 +97,7 @@
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label" for="validationCustom04">{{ __('product.discount') }} (%)</label>
                                     <select name="discount" id="discount" class="form-control" value="{{ Request::old('discount') ? Request::old('discount') : $product->discount }}">
-                                        <option value="" selected>Please select a discount.</option>
+                                        <option value="" selected>{{__('product.discount_select') }}</option>
                                         <?php
                                             for($d = 0.01 ; $d < 1 ; $d = $d + 0.01){   //for(start => 1% ; end => 99% ; increment=> ++1)
                                         ?>
@@ -115,7 +115,7 @@
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label" for="validationCustom03">{{ __('product.price') }} <span class="text-danger">*</span></label>
                                     <input class="form-control" id="validationCustom03" type="number" name="price"
-                                        placeholder="Price in EGP" required="" value="{{ Request::old('price') ? Request::old('price') : $product->price }}" 
+                                        placeholder="{{__('product.price') }}" required="" value="{{ Request::old('price') ? Request::old('price') : $product->price }}" 
                                         onkeyup="$('#gain_value_final_price_product_create').val($(this).val() - ( $(this).val() * $('#discount').val() ) );"/>
                                     <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                     <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
@@ -124,7 +124,7 @@
 
                             <div class="row g-1">
                                 <div class="col-md-12 mb-4 mt-3">
-                                    <input class="form-control" id="gain_value_final_price_product_create" placeholder="Price After Discount/Final Price" disabled>
+                                    <input class="form-control" id="gain_value_final_price_product_create" placeholder="{{__('product.final_price') }}" disabled>
                                 </div>
                             </div>
 
@@ -132,7 +132,7 @@
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label" for="validationDefault08">{{ __('product.product_category') }} <span class="text-danger">*</span></label>
                                     <select name="category_id" class="form-control" value="{{ Request::old('category_id') ? Request::old('category_id') : $product->category_id }}">
-                                        <option value="" selected>No category selected.</option>
+                                        <option value="" selected>{{__('product.select_category') }}</option>
                                         @forelse($product_category as $p_cat)
                                             <option value="{{ $p_cat->id }}" {{ $p_cat->id == $product->category_id ? 'selected'  : '' }}>
                                                 @if($p_cat->parent_id == null)

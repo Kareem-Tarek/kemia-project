@@ -37,6 +37,7 @@
                             @csrf
 
                             <div class="tab-content" id="pills-tabContent">
+
                                 <div class="tab-pane fade mt-4 @if(LaravelLocalization::getCurrentLocale() == 'en') show active @endif" id="en" role="tabpanel" aria-labelledby="en-tab">
                                         <div class="row g-1">
                                             <div class="col-md-12 mb-3">
@@ -57,7 +58,18 @@
                                                 <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                             </div>
                                         </div>
+
+                                        <div class="row g-1">
+                                            <div class="col-md-12 mb-3">
+                                                <label class="form-label" for="validationCustom01">{{ __('setting.short_description') }}</label>
+                                                <textarea class="form-control" id="validationCustom01"
+                                                    name="short_description_en" placeholder="ex: color, size, about setting" value="{{ old('short_description_en') }}"> </textarea>
+                                                <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                                <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                            </div>
+                                        </div>
                                 </div>
+                                
 
                                 <div class="tab-pane fade mt-4 @if(LaravelLocalization::getCurrentLocale() == 'ar') show active @endif" id="ar" role="tabpanel" aria-labelledby="ar-tab">
                                         <div class="row g-1">
@@ -80,66 +92,26 @@
                                             </div>
                                         </div>
 
+                                        <div class="row g-1">
+                                            <div class="col-md-12 mb-3">
+                                                <label class="form-label" for="validationCustom01">{{ __('setting.short_description') }}</label>
+                                                <textarea class="form-control" id="validationCustom01"
+                                                    name="short_description_ar" placeholder="ex: color, size, about setting" value="{{ old('short_description_ar') }}"> </textarea>
+                                                <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                                <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                            </div>
+                                        </div>
+
                                 </div>
                             </div>
 
                             <div class="row g-1">
                                 <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="validationCustom07">{{ __('master.image') }} <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="validationCustom07" type="file" aria-label="file example" name="image" />
-                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
-                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
-                                </div>
-                            </div>
-
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="validationCustom04">{{ __('setting.discount') }} (%)</label>
-                                    <select name="discount" id="discount" class="form-control" value="{{ old('discount') }}">
-                                        <option value="" selected>Please select a discount.</option>
-                                        <?php
-                                            for($d = 0.01 ; $d < 1 ; $d = $d + 0.01){   //for(start => 1% ; end => 99% ; increment=> ++1)
-                                        ?>
-                                                <option value="{{ $d }}">{{ $d * 100 }}%</option>
-                                        <?php
-                                            }
-                                        ?>
-                                    </select>
-                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
-                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
-                                </div>
-                            </div>
-
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="validationCustom03">{{ __('setting.price') }} <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="validationCustom03" type="number" name="price"
-                                        placeholder="Price in EGP" required="" value="{{ old('price') }}" 
-                                        onkeyup="$('#gain_value_final_price_setting_create').val($(this).val() - ( $(this).val() * $('#discount').val() ) );"/>
-                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
-                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
-                                </div>
-                            </div>
-
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-4 mt-3">
-                                    <input class="form-control" id="gain_value_final_price_setting_create" placeholder="Price After Discount/Final Price" disabled>
-                                </div>
-                            </div>
-
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="validationDefault08">{{ __('setting.setting_category') }} <span class="text-danger">*</span></label>
-                                    <select name="category_id" class="form-control" value="{{ old('category_id') }}">
-                                        <option value="" selected>No category selected.</option>
-                                        @forelse($setting_category as $p_cat)
-                                            <option value="{{ $p_cat->id }}">
-                                                @if($p_cat->parent_id == null)
-                                                    {{ $p_cat->name }}
-                                                @else
-                                                    ({{ $p_cat->name }}) &RightArrow; {{ $p_cat->subCategory->name }}
-                                                @endif
-                                            </option>
+                                    <label class="form-label" for="validationDefault08">{{ __('setting.user_name') }} <span class="text-danger">*</span></label>
+                                    <select name="user_id" class="form-control" value="{{ old('user_id') }}" required>
+                                        <option value="" selected>{{__('setting.select_user') }}</option>
+                                        @forelse($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
                                             @empty
                                         @endforelse
                                     </select>
@@ -148,21 +120,63 @@
                                 </div>
                             </div>
 
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="validationCustom01">{{ __('setting.keywords') }}</label>
+                            <div class="row g-2">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="validationCustom01">{{ __('setting.phone') }} <span class="text-danger">*</span></label>
                                     <input class="form-control" id="validationCustom01" type="text"
-                                        name="keywords" placeholder="ex: Clips, Music, etc." value="{{ old('keywords') }}" />
+                                        name="phone" placeholder="ex: +201110000 " value="{{ old('phone') }}" required/>
+                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="validationCustom01">{{ __('setting.phone2') }}</label>
+                                    <input class="form-control" id="validationCustom01" type="text"
+                                        name="phone2" placeholder="ex: +201110000 " value="{{ old('phone2') }}"/>
                                     <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                     <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                 </div>
                             </div>
 
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="validationCustom01">{{ __('setting.meta_description') }}</label>
-                                    <textarea class="form-control" id="validationCustom01"
-                                        name="meta_description" placeholder="ex: Manufacturer, made in china" value="{{ old('meta_description') }}"> </textarea>
+                            <div class="row g-2">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="validationCustom01">{{ __('setting.email') }} <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="validationCustom01" type="text"
+                                        name="email" placeholder="ex: example@email.com " value="{{ old('email') }}" required/>
+                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="validationCustom01">{{ __('setting.whatsApp') }} <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="validationCustom01" type="text"
+                                        name="whatsApp" placeholder="ex: +201110000 " value="{{ old('whatsApp') }}" required/>
+                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label" for="validationCustom01">{{ __('setting.facebook') }}</label>
+                                    <input class="form-control" id="validationCustom01" type="text"
+                                        name="facebook" placeholder="ex: https://www.facebook.com " value="{{ old('facebook') }}" />
+                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                </div>
+ 
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label" for="validationCustom01">{{ __('setting.twitter') }}</label>
+                                    <input class="form-control" id="validationCustom01" type="text"
+                                        name="twitter" placeholder="ex: https://twitter.com/ " value="{{ old('twitter') }}" />
+                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                </div>
+ 
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label" for="validationCustom01">{{ __('setting.instagram') }}</label>
+                                    <input class="form-control" id="validationCustom01" type="text"
+                                        name="instagram" placeholder="ex: https://instagram.com/ " value="{{ old('instagram') }}" />
                                     <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                     <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                 </div>

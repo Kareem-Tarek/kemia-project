@@ -97,7 +97,7 @@
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label" for="validationCustom04"><?php echo e(__('product.discount')); ?> (%)</label>
                                     <select name="discount" id="discount" class="form-control" value="<?php echo e(old('discount')); ?>">
-                                        <option value="" selected>Please select a discount.</option>
+                                        <option value="" selected><?php echo e(__('product.discount_select')); ?></option>
                                         <?php
                                             for($d = 0.01 ; $d < 1 ; $d = $d + 0.01){   //for(start => 1% ; end => 99% ; increment=> ++1)
                                         ?>
@@ -115,7 +115,7 @@
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label" for="validationCustom03"><?php echo e(__('product.price')); ?> <span class="text-danger">*</span></label>
                                     <input class="form-control" id="validationCustom03" type="number" name="price"
-                                        placeholder="Price in EGP" required="" value="<?php echo e(old('price')); ?>" 
+                                        placeholder="<?php echo e(__('product.price')); ?>" required="" value="<?php echo e(old('price')); ?>" 
                                         onkeyup="$('#gain_value_final_price_product_create').val($(this).val() - ( $(this).val() * $('#discount').val() ) );"/>
                                     <div class="valid-feedback"><?php echo e(__('validation.valid_feedback')); ?></div>
                                     <div class="invalid-feedback"><?php echo e(__('validation.invalid_feedback')); ?></div>
@@ -124,7 +124,7 @@
 
                             <div class="row g-1">
                                 <div class="col-md-12 mb-4 mt-3">
-                                    <input class="form-control" id="gain_value_final_price_product_create" placeholder="Price After Discount/Final Price" disabled>
+                                    <input class="form-control" id="gain_value_final_price_product_create" placeholder="<?php echo e(__('product.final_price')); ?>" disabled>
                                 </div>
                             </div>
 
@@ -132,7 +132,7 @@
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label" for="validationDefault08"><?php echo e(__('product.product_category')); ?> <span class="text-danger">*</span></label>
                                     <select name="category_id" class="form-control" value="<?php echo e(old('category_id')); ?>">
-                                        <option value="" selected>No category selected.</option>
+                                        <option value="" selected><?php echo e(__('product.select_category')); ?></option>
                                         <?php $__empty_1 = true; $__currentLoopData = $product_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p_cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                             <option value="<?php echo e($p_cat->id); ?>">
                                                 <?php if($p_cat->parent_id == null): ?>

@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('settings', function (Blueprint $table) {
-            $table->id();
-            $table->string('title','500');
+            $table->bigIncrements('id');
+            $table->string('title', '500');
             $table->longText('description')->nullable();
             $table->longText('short_description')->nullable();
             $table->string('phone');
@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();
+            $table->string('user_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -26,7 +26,8 @@ class  User extends Authenticatable implements HasMedia
         'phone',
         'roles_name',
         'point',
-        'photo'
+        'photo',
+        'setting_id',
     ];
 
     /**
@@ -46,4 +47,9 @@ class  User extends Authenticatable implements HasMedia
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setting()
+    {
+        return $this->hasOne(Setting::class, 'user_id' , 'id');
+    }
 }

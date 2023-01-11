@@ -150,7 +150,7 @@ class CategoryController extends Controller
 
     public function forceDelete($id)
     {
-        Category::findOrFail($id)->forceDelete();
+        Category::where('id', $id)->forceDelete();
         return redirect()->route('categories.delete')
             ->with('success', __('master.messages_permanent_delete'));
     }

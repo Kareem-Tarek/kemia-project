@@ -98,15 +98,6 @@
                                             </td>
                                             
                                             <td>
-                                                <?php if($product->category->parent_id == null): ?>
-                                                    <?php echo e($product->category->name); ?>
-
-                                                <?php else: ?>
-                                                    (<?php echo e($product->category->name); ?>) &RightArrow; <?php echo e($product->category->parent_id ?? __('master.null')); ?>
-
-
-                                                    
-                                                <?php endif; ?>
                                             </td>
                                             <td>
                                                 <div style="display: flex;">
@@ -129,7 +120,7 @@
                                             </td>
                                         </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                            <div class="alert alert-secondary text-center h5">There are no products yet! <a href="<?php echo e(route('products.create')); ?>" class="text-decoration-underline fw-bold text-dark">Please add products</a> and come back again.</div>
+                                            <div class="alert alert-secondary text-center h5"><?php echo e(__('product.index_forelse_loop_empty_msg_1')); ?> <a href="<?php echo e(route('products.create')); ?>" class="text-decoration-underline fw-bold text-dark"><?php echo e(__('product.index_forelse_loop_empty_msg_2')); ?></a> <?php echo e(__('product.index_forelse_loop_empty_msg_3')); ?></div>
                                     <?php endif; ?>
                                 </tbody>
                             </table>

@@ -139,4 +139,26 @@ class ProductController extends Controller
         return redirect()->back()
             ->with('success', __('master.messages_delete'));
     }
+
+    public function delete()
+    {
+        $all_deleted_products = Product::orderBy('created_at', 'asc')->onlyTrashed()->paginate(30);
+
+        return view('dashboard.products.delete', compact('all_deleted_products'));
+    }
+
+    public function restore($id)
+    {
+        Product::withTrashed()->find($id)->restore();
+        $products = Product::findOrFail($id);
+        return redirect()->route('products.delete')
+            ->with('success', __('master.messages_restore'));
+    }
+
+    public function forceDelete($id)
+    {
+        Product::where('id', $id)->forceDelete();
+        return redirect()->route('products.delete')
+            ->with('success', __('master.messages_permanent_delete'));
+    }
 }

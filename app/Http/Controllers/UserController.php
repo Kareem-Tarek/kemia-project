@@ -134,5 +134,25 @@ class UserController extends Controller
         return view('dashboard.users.in-active-list', compact('users'));
     }
 
+    public function delete()
+    {
+        $users = User::orderBy('created_at', 'asc')->onlyTrashed()->paginate(30);
 
+        return view('dashboard.users.delete', compact('users'));
+    }
+
+    public function restore($id)
+    {
+        User::withTrashed()->find($id)->restore();
+        User::findOrFail($id);
+        return redirect()->route('users.delete')
+            ->with('success', __('master.messages_restore'));
+    }
+
+    public function forceDelete($id)
+    {
+        User::where('id', $id)->forceDelete();
+        return redirect()->route('users.delete')
+            ->with('success', __('master.messages_permanent_delete'));
+    }
 }

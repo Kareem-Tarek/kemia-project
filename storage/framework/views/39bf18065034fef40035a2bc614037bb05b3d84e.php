@@ -72,21 +72,35 @@
                                 </div>
                             </div>
 
+                            <div class="row g-1">
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label" for="validationCustom02"><?php echo e(__('category.status')); ?> <span class="text-danger">*</span></label>
+                                    <select class="form-control" name="status" id="validationCustom02" value="<?php echo e(Request::old('status') ? Request::old('status') : $category->status); ?>" required="">
+                                        <option value="" selected><?php echo e(__('category.select_status')); ?></option>
+                                        <option value="<?php echo e("available"); ?>" <?php echo e($category->status == "available" ? 'selected'  : ''); ?>><?php echo e(__('category.available')); ?></option>
+                                        <option value="<?php echo e("unavailable"); ?>" <?php echo e($category->status == "unavailable" ? 'selected'  : ''); ?>><?php echo e(__('category.unavailable')); ?></option>
+                                    </select>
+                                    <div class="valid-feedback"><?php echo e(__('validation.valid_feedback')); ?></div>
+                                    <div class="invalid-feedback"><?php echo e(__('validation.invalid_feedback')); ?></div>
+                                </div>
+                            </div>
+
                             <div class="row g-1 <?php if($category->parent_id == null): ?> d-none <?php endif; ?>">
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label"><?php echo e(__('category.sub_category_of')); ?> <span class="text-danger">*</span></label>
                                         <select name="parent_id" class="form-control" value="<?php echo e(Request::old('parent_id') ? Request::old('parent_id') : $category->parent_id); ?>" required>
-                                            <option value="" selected>No sub-category selected.</option>
-                                            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="" selected><?php echo e(__('category.select_subcategory')); ?></option>
+                                            <?php $__empty_1 = true; $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                                 <option value="<?php echo e($cat->id); ?>" <?php echo e($cat->id == $category->parent_id ? 'selected'  : ''); ?>><?php echo e($cat->name); ?></option>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                            <?php endif; ?>
                                         </select>
                                     <div class="valid-feedback"><?php echo e(__('validation.valid_feedback')); ?></div>
                                     <div class="invalid-feedback"><?php echo e(__('validation.invalid_feedback')); ?></div>
                                 </div>
                             </div>
 
-                            <button class="btn btn-primary" type="submit">حفظ</button>
+                            <button class="btn btn-primary" type="submit"><?php echo e(__('master.save')); ?></button>
                         </form>
                     </div>
                 </div>

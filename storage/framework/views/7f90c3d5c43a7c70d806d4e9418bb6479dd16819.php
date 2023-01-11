@@ -1,20 +1,16 @@
 
 
 <?php $__env->startSection('title'); ?>
-    <?php echo e(__('user.user')); ?>
+    <?php echo e(__('user.deleted_users')); ?>
 
 <?php $__env->stopSection(); ?>
-<?php $__env->startPush('css'); ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/datatables.css')); ?>">
-
-<?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
     <?php $__env->startComponent('components.breadcrumb'); ?>
         <?php $__env->slot('breadcrumb_title'); ?>
             <h3><?php echo e(__('user.user')); ?></h3>
         <?php $__env->endSlot(); ?>
-        <li class="breadcrumb-item active"><?php echo e(__('user.user')); ?></li>
+        <li class="breadcrumb-item active"><?php echo e(__('user.deleted_users')); ?></li>
     <?php echo $__env->renderComponent(); ?>
 
 
@@ -24,7 +20,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
-                            <table class="table-striped display table-bordered" id="responsive">
+                            <table class="table-striped display table-bordered <?php if($users->count() == 0): ?> d-none <?php endif; ?>" id="responsive">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -60,22 +56,23 @@
                                             </td>
                                             <td>
                                                 <div style="display: flex;">
-                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user-edit')): ?>
-                                                        <a class="btn btn-outline-primary-2x" style="margin:0 20px;" href="<?php echo e(route('users.edit', $user->id)); ?>"><?php echo e(__('master.edit')); ?></a>
+                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user-restore')): ?>
+                                                        <a class="btn btn-outline-success-2x" style="margin:0 20px;" href="<?php echo e(route('users.restore', $user->id)); ?>"><?php echo e(__('master.restore')); ?></a>
                                                     <?php endif; ?>
 
-                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user-delete')): ?>
-                                                        <form action="<?php echo e(route('users.destroy', $user->id)); ?>" method="post">
+                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user-forceDelete')): ?>
+                                                        <form action="<?php echo e(route('users.forceDelete', $user->id)); ?>" method="post">
                                                             <?php echo csrf_field(); ?>
                                                             <?php echo method_field('delete'); ?>
-                                                            <input style="border-color: #d22d3d;" class="btn btn-outline-danger-2x" value="<?php echo e(__('master.delete')); ?>" type="submit">
+                                                            <input style="border-color: #d22d3d;" class="btn btn-outline-danger-2x" value="<?php echo e(__('master.permanent_delete')); ?>" type="submit"
+                                                            onclick="return confirm('<?php echo e(__('user.permanent_delete')); ?> (<?php echo e($user->name); ?>)');">
                                                         </form>
                                                     <?php endif; ?>
                                                 </div>
                                             </td>
                                         </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-
+                                        <div class="alert alert-secondary text-center h5"><?php echo e(__('user.empty_deleted_foresle_msg')); ?></div>
                                     <?php endif; ?>
                                 </tbody>
                             </table>
@@ -87,10 +84,11 @@
     </div>
 
 
+
     <?php $__env->startPush('scripts'); ?>
-        <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/custom.js')); ?>"></script>
-        <script src="<?php echo e(asset('assets/js/prism/prism.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/bootstrap/popper.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/bootstrap/bootstrap.min.js')); ?>"></script>
     <?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\kemia-project\resources\views/dashboard/users/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laragon\www\kemia-project\resources\views/dashboard/users/delete.blade.php ENDPATH**/ ?>

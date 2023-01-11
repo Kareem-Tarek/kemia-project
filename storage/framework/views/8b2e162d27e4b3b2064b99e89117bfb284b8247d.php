@@ -57,10 +57,10 @@
                     <div class="row">
                         <div class="col-md-12 footer-copyright">
                             <p class="mb-0">Copyright 2022-2023 © by 
-                                <a href="http://wa.me/+201065858355">Baraa Samy</a> <i class="fa-brands fa-whatsapp"></i> &nbsp;—&nbsp; 
-                                <a href="http://wa.me/+201150100104">Mohamed Samy</a> <i class="fa-brands fa-whatsapp"></i> &nbsp;—&nbsp; 
-                                <a href="http://wa.me/+201010110457">Kareem Tarek</a> <i class="fa-brands fa-whatsapp"></i> &nbsp;—&nbsp;
-                                <a href="http://wa.me/+201112554996">Ahmed Khalifa</a> <i class="fa-brands fa-whatsapp"></i>
+                                <a href="http://wa.me/+201065858355" target="_blank">Baraa Samy</a> <i class="fa-brands fa-whatsapp"></i> &nbsp;—&nbsp; 
+                                <a href="http://wa.me/+201150100104" target="_blank">Mohamed Samy</a> <i class="fa-brands fa-whatsapp"></i> &nbsp;—&nbsp; 
+                                <a href="http://wa.me/+201010110457" target="_blank">Kareem Tarek</a> <i class="fa-brands fa-whatsapp"></i> &nbsp;—&nbsp;
+                                <a href="http://wa.me/+201112554996" target="_blank">Ahmed Khalifa</a> <i class="fa-brands fa-whatsapp"></i>
                             </p>
                         </div>
                         

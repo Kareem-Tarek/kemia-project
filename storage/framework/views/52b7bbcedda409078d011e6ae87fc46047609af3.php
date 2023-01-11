@@ -64,6 +64,10 @@
 
                                         </a></li>
                                 <?php endif; ?>
+
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user-delete')): ?>
+                                <li><a href="<?php echo e(route('users.delete')); ?>" class="<?php echo e(routeActive('users.delete')); ?>"><?php echo e(__('user.deleted_users')); ?></a></li>
+                                <?php endif; ?>
                             </ul>
                         </li>
                     <?php endif; ?>
@@ -82,7 +86,7 @@
                                 <?php endif; ?>
 
                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('category-delete')): ?>
-                                    <li><a href="<?php echo e(route('categories.delete')); ?>" class="<?php echo e(routeActive('categories.delete')); ?>"><?php echo e(__('master.deleted')); ?></a></li>
+                                    <li><a href="<?php echo e(route('categories.delete')); ?>" class="<?php echo e(routeActive('categories.delete')); ?>"><?php echo e(__('category.deleted_categories')); ?></a></li>
                                 <?php endif; ?>
                             </ul>
                         </li>
@@ -100,10 +104,33 @@
                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('product-create')): ?>
                                     <li><a href="<?php echo e(route('products.create')); ?>" class="<?php echo e(routeActive('products.create')); ?>"><?php echo e(__('product.add_product')); ?></a></li>
                                 <?php endif; ?>
+
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('product-delete')): ?>
+                                <li><a href="<?php echo e(route('products.delete')); ?>" class="<?php echo e(routeActive('products.delete')); ?>"><?php echo e(__('product.deleted_products')); ?></a></li>
+                                <?php endif; ?>
                             </ul>
                         </li>
                     <?php endif; ?>
 
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('setting-list')): ?>
+                        <li class="dropdown">
+                            <a class="nav-link menu-title <?php echo e(prefixActive('settings')); ?>" href="javascript:void(0)">
+                                <i data-feather="home"></i>
+                                <span><?php echo e(__('setting.setting')); ?></span>
+                            </a>
+                            <ul class="nav-submenu menu-content" style="display: <?php echo e(prefixBlock('settings')); ?>;">
+                                <li><a href="<?php echo e(route('settings.index')); ?>" class="<?php echo e(routeActive('settings.index')); ?>"><?php echo e(__('setting.setting_list')); ?></a>
+                                </li>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('setting-create')): ?>
+                                    <li><a href="<?php echo e(route('settings.create')); ?>" class="<?php echo e(routeActive('settings.create')); ?>"><?php echo e(__('setting.add_setting')); ?></a></li>
+                                <?php endif; ?>
+
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('setting-delete')): ?>
+                                <li><a href="<?php echo e(route('settings.delete')); ?>" class="<?php echo e(routeActive('settings.delete')); ?>"><?php echo e(__('setting.deleted_settings')); ?></a></li>
+                                <?php endif; ?>
+                            </ul>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

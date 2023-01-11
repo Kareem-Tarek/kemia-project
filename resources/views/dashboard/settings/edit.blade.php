@@ -32,20 +32,21 @@
                             <li class="nav-item"><a class="nav-link @if(LaravelLocalization::getCurrentLocale() == 'en') active  @endif" id="en-tab" data-bs-toggle="pill" href="#en" role="tab" aria-controls="en" aria-selected="@if(LaravelLocalization::getCurrentLocale() == 'en') true @else false @endif">{{__('master.english')}}</a></li>
                         </ul>
 
-                        <form class="needs-validation" novalidate="" method="post" action="{{ route('settings.update' , $setting->id) }}"
+                        <form class="needs-validation" novalidate="" method="post" action="{{ route('settings.update', $setting->id) }}"
                             enctype="multipart/form-data">
                             @csrf
-                            {{ method_field('patch') }}
+                            @method('patch')
 
                             <div class="tab-content" id="pills-tabContent">
+
                                 <div class="tab-pane fade mt-4 @if(LaravelLocalization::getCurrentLocale() == 'en') show active @endif" id="en" role="tabpanel" aria-labelledby="en-tab">
                                         <div class="row g-1">
                                             <div class="col-md-12 mb-3">
                                                 <label class="form-label" for="validationCustom01">{{ __('setting.title') }} <span class="text-danger">*</span></label>
                                                 <input class="form-control" id="validationCustom01" type="text" required=""
-                                                    name="title_en" placeholder="ex: Black shirt" value="{{ Request::old('title_en') ? Request::old('title_en') : $setting->getTranslation( 'title', 'en' ) }}" />
+                                                    name="title_en" placeholder="ex: Black shirt" value="{{ Request::old('title_en') ? Request::old('title_en') : $setting->getTranslation( 'title', 'en' )}}" />
                                                 <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
-                                                <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div> 
+                                                <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                             </div>
                                         </div>
 
@@ -53,19 +54,30 @@
                                             <div class="col-md-12 mb-3">
                                                 <label class="form-label" for="validationCustom01">{{ __('setting.description') }}</label>
                                                 <textarea class="form-control" id="validationCustom01"
-                                                    name="description_en" placeholder="ex: color, size, about setting" value="{{ Request::old('description_en') ? Request::old('description_en') : $setting->getTranslation( 'description', 'en' ) }}"> </textarea>
+                                                    name="description_en" placeholder="ex: color, size, about setting" value="{{ Request::old('description_en') ? Request::old('description_en') : $setting->getTranslation( 'description', 'en' )}}"> </textarea>
+                                                <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                                <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row g-1">
+                                            <div class="col-md-12 mb-3">
+                                                <label class="form-label" for="validationCustom01">{{ __('setting.short_description') }}</label>
+                                                <textarea class="form-control" id="validationCustom01"
+                                                    name="short_description_en" placeholder="ex: color, size, about setting" value="{{ Request::old('short_description_en') ? Request::old('short_description_en') : $setting->getTranslation( 'short_description', 'en' )}}"> </textarea>
                                                 <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                                 <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                             </div>
                                         </div>
                                 </div>
+                                
 
                                 <div class="tab-pane fade mt-4 @if(LaravelLocalization::getCurrentLocale() == 'ar') show active @endif" id="ar" role="tabpanel" aria-labelledby="ar-tab">
                                         <div class="row g-1">
                                             <div class="col-md-12 mb-3">
                                                 <label class="form-label" for="validationCustom01">{{ __('setting.title') }} <span class="text-danger">*</span></label>
                                                 <input class="form-control" id="validationCustom01" type="text" required=""
-                                                    name="title_ar" placeholder="ex: Black shirt" value="{{ Request::old('title_ar') ? Request::old('title_ar') : $setting->getTranslation( 'title', 'ar' ) }}" />
+                                                    name="title_ar" placeholder="ex: Black shirt" value="{{ Request::old('title_ar') ? Request::old('title_ar') : $setting->getTranslation( 'title', 'ar' )}}" />
                                                 <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                                 <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                             </div>
@@ -75,7 +87,17 @@
                                             <div class="col-md-12 mb-3">
                                                 <label class="form-label" for="validationCustom01">{{ __('setting.description') }}</label>
                                                 <textarea class="form-control" id="validationCustom01"
-                                                    name="description_ar" placeholder="ex: color, size, about setting" value="{{ Request::old('description_ar') ? Request::old('description_ar') : $setting->getTranslation( 'description', 'ar' ) }}"> </textarea>
+                                                    name="description_ar" placeholder="ex: color, size, about setting" value="{{ Request::old('description_ar') ? Request::old('description_ar') : $setting->getTranslation( 'description', 'ar' )}}"> </textarea>
+                                                <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                                <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row g-1">
+                                            <div class="col-md-12 mb-3">
+                                                <label class="form-label" for="validationCustom01">{{ __('setting.short_description') }}</label>
+                                                <textarea class="form-control" id="validationCustom01"
+                                                    name="short_description_ar" placeholder="ex: color, size, about setting" value="{{ Request::old('short_description_ar') ? Request::old('short_description_ar') : $setting->getTranslation( 'short_description', 'ar' )}}"> </textarea>
                                                 <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                                 <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                             </div>
@@ -86,61 +108,11 @@
 
                             <div class="row g-1">
                                 <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="validationCustom07">{{ __('master.image') }} <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="validationCustom07" type="file" aria-label="file example" name="image" />
-                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
-                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
-                                </div>
-                            </div>
-
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="validationCustom04">{{ __('setting.discount') }} (%)</label>
-                                    <select name="discount" id="discount" class="form-control" value="{{ Request::old('discount') ? Request::old('discount') : $setting->discount }}">
-                                        <option value="" selected>Please select a discount.</option>
-                                        <?php
-                                            for($d = 0.01 ; $d < 1 ; $d = $d + 0.01){   //for(start => 1% ; end => 99% ; increment=> ++1)
-                                        ?>
-                                                <option value="{{ $d }}">{{ $d * 100 }}%</option>
-                                        <?php
-                                            }
-                                        ?>
-                                    </select>
-                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
-                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
-                                </div>
-                            </div>
-
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="validationCustom03">{{ __('setting.price') }} <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="validationCustom03" type="number" name="price"
-                                        placeholder="Price in EGP" required="" value="{{ Request::old('price') ? Request::old('price') : $setting->price }}" 
-                                        onkeyup="$('#gain_value_final_price_setting_create').val($(this).val() - ( $(this).val() * $('#discount').val() ) );"/>
-                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
-                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
-                                </div>
-                            </div>
-
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-4 mt-3">
-                                    <input class="form-control" id="gain_value_final_price_setting_create" placeholder="Price After Discount/Final Price" disabled>
-                                </div>
-                            </div>
-
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="validationDefault08">{{ __('setting.setting_category') }} <span class="text-danger">*</span></label>
-                                    <select name="category_id" class="form-control" value="{{ Request::old('category_id') ? Request::old('category_id') : $setting->category_id }}">
-                                        <option value="" selected>No category selected.</option>
-                                        @forelse($setting_category as $p_cat)
-                                            <option value="{{ $p_cat->id }}" {{ $p_cat->id == $setting->category_id ? 'selected'  : '' }}>
-                                                @if($p_cat->parent_id == null)
-                                                    {{ $p_cat->name }}
-                                                @else
-                                                    ({{ $p_cat->name }}) &RightArrow; {{ $p_cat->subCategory->name }}
-                                                @endif
-                                            </option>
+                                    <label class="form-label" for="validationDefault08">{{ __('setting.user_name') }} <span class="text-danger">*</span></label>
+                                    <select name="user_id" class="form-control" value="{{ Request::old('user_id') ? Request::old('user_id') : $setting->user_id }}" required>
+                                        <option value="" selected>No users selected </option>
+                                        @forelse($users as $user)
+                                            <option value="{{ $user->id }}" {{ $user->id == $setting->user_id ? 'selected'  : '' }}>{{ $user->name }}</option>
                                             @empty
                                         @endforelse
                                     </select>
@@ -149,21 +121,63 @@
                                 </div>
                             </div>
 
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="validationCustom01">{{ __('setting.keywords') }}</label>
+                            <div class="row g-2">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="validationCustom01">{{ __('setting.phone') }} <span class="text-danger">*</span></label>
                                     <input class="form-control" id="validationCustom01" type="text"
-                                        name="keywords" placeholder="ex: Clips, Music, etc." value="{{ Request::old('keywords') ? Request::old('keywords') : $setting->keywords }}" />
+                                        name="phone" placeholder="ex: +201110000 " value="{{ Request::old('phone') ? Request::old('phone') : $setting->phone }}" required/>
+                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="validationCustom01">{{ __('setting.phone2') }}</label>
+                                    <input class="form-control" id="validationCustom01" type="text"
+                                        name="phone2" placeholder="ex: +201110000 " value="{{ Request::old('phone2') ? Request::old('phone2') : $setting->phone2 }}"/>
                                     <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                     <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                 </div>
                             </div>
 
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="validationCustom01">{{ __('setting.meta_description') }}</label>
-                                    <textarea class="form-control" id="validationCustom01"
-                                        name="meta_description" placeholder="ex: Manufacturer, made in china" value="{{ Request::old('meta_description') ? Request::old('meta_description') : $setting->meta_description }}"> </textarea>
+                            <div class="row g-2">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="validationCustom01">{{ __('setting.email') }} <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="validationCustom01" type="text"
+                                        name="email" placeholder="ex: example@email.com " value="{{ Request::old('email') ? Request::old('email') : $setting->email }}" required/>
+                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="validationCustom01">{{ __('setting.whatsApp') }} <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="validationCustom01" type="text"
+                                        name="whatsApp" placeholder="ex: +201110000 " value="{{ Request::old('whatsApp') ? Request::old('whatsApp') : $setting->whatsApp }}" required/>
+                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label" for="validationCustom01">{{ __('setting.facebook') }}</label>
+                                    <input class="form-control" id="validationCustom01" type="text"
+                                        name="facebook" placeholder="ex: https://www.facebook.com " value="{{ Request::old('facebook') ? Request::old('facebook') : $setting->facebook }}" />
+                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                </div>
+ 
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label" for="validationCustom01">{{ __('setting.twitter') }}</label>
+                                    <input class="form-control" id="validationCustom01" type="text"
+                                        name="twitter" placeholder="ex: https://twitter.com/ " value="{{ Request::old('twitter') ? Request::old('twitter') : $setting->twitter }}" />
+                                    <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
+                                    <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
+                                </div>
+ 
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label" for="validationCustom01">{{ __('setting.instagram') }}</label>
+                                    <input class="form-control" id="validationCustom01" type="text"
+                                        name="instagram" placeholder="ex: https://instagram.com/ " value="{{ Request::old('instagram') ? Request::old('instagram') : $setting->instagram }}" />
                                     <div class="valid-feedback">{{ __('validation.valid_feedback') }}</div>
                                     <div class="invalid-feedback">{{ __('validation.invalid_feedback') }}</div>
                                 </div>

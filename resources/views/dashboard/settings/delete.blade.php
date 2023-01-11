@@ -60,18 +60,19 @@
                                             <td><a href="{{ $setting->instagram ?? 'javascript:void(0)' }}" target="_blank"><i class="fa-brands fa-instagram"></i></a></td>
                                             <td>
                                                 <div style="display: flex;">
-                                                    @can('setting-edit')
+                                                    @can('setting-restore')
                                                         <a class="btn btn-outline-primary-2x" style="margin:0 20px;"
-                                                            href="{{ route('settings.edit', $setting->id) }}">{{ __('master.edit') }}</a>
+                                                            href="{{ route('settings.restore', $setting->id) }}">{{ __('master.restore') }}</a>
                                                     @endcan
 
-                                                    @can('setting-delete')
-                                                        <form action="{{ route('settings.destroy', $setting->id) }}" method="post">
+                                                    @can('setting-forceDelete')
+                                                        <form action="{{ route('settings.forceDelete', $setting->id) }}" method="post">
                                                             @csrf
                                                             @method('delete')
                                                             <input style="border-color: #d22d3d;"
                                                                 class="btn btn-outline-danger-2x"
-                                                                value="{{ __('master.delete') }}" type="submit">
+                                                                value="{{ __('master.permanent_delete') }}" type="submit"
+                                                                onclick="return confirm('{{__('setting.forcedelete_warning') }} \n ({{ $setting->user->name }})')">
 
                                                         </form>
                                                     @endcan
@@ -79,7 +80,7 @@
                                             </td>
                                         </tr>
                                         @empty
-                                            <div class="alert alert-secondary text-center h5">{{ __('setting.index_forelse_loop_empty_msg_1') }} <a href="{{ route('settings.create') }}" class="text-decoration-underline fw-bold text-dark">{{ __('setting.index_forelse_loop_empty_msg_2') }}</a> {{ __('setting.index_forelse_loop_empty_msg_3') }}</div>
+                                            <div class="alert alert-secondary text-center h5">{{__('setting.empty_deleted_foresle_msg') }}</div>
                                     @endforelse
                                 </tbody>
                             </table>

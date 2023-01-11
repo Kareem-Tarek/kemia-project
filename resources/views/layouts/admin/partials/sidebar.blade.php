@@ -63,6 +63,10 @@
                                             class="{{ routeActive('users.create') }}">{{ __('user.user_add') }}
                                         </a></li>
                                 @endcan
+
+                                @can('user-delete')
+                                <li><a href="{{ route('users.delete')}}" class="{{ routeActive('users.delete') }}">{{ __('user.deleted_users') }}</a></li>
+                                @endcan
                             </ul>
                         </li>
                     @endcan
@@ -81,7 +85,7 @@
                                 @endcan
 
                                 @can('category-delete')
-                                    <li><a href="{{ route('categories.delete')}}" class="{{ routeActive('categories.delete') }}">{{ __('master.deleted') }}</a></li>
+                                    <li><a href="{{ route('categories.delete')}}" class="{{ routeActive('categories.delete') }}">{{ __('category.deleted_categories') }}</a></li>
                                 @endcan
                             </ul>
                         </li>
@@ -99,10 +103,33 @@
                                 @can('product-create')
                                     <li><a href="{{ route('products.create')}}" class="{{ routeActive('products.create') }}">{{ __('product.add_product') }}</a></li>
                                 @endcan
+
+                                @can('product-delete')
+                                <li><a href="{{ route('products.delete')}}" class="{{ routeActive('products.delete') }}">{{ __('product.deleted_products') }}</a></li>
+                                @endcan
                             </ul>
                         </li>
                     @endcan
 
+                    @can('setting-list')
+                        <li class="dropdown">
+                            <a class="nav-link menu-title {{ prefixActive('settings') }}" href="javascript:void(0)">
+                                <i data-feather="home"></i>
+                                <span>{{ __('setting.setting')}}</span>
+                            </a>
+                            <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('settings') }};">
+                                <li><a href="{{ route('settings.index')}}" class="{{ routeActive('settings.index') }}">{{ __('setting.setting_list') }}</a>
+                                </li>
+                                @can('setting-create')
+                                    <li><a href="{{ route('settings.create')}}" class="{{ routeActive('settings.create') }}">{{ __('setting.add_setting') }}</a></li>
+                                @endcan
+
+                                @can('setting-delete')
+                                <li><a href="{{ route('settings.delete')}}" class="{{ routeActive('settings.delete') }}">{{ __('setting.deleted_settings') }}</a></li>
+                                @endcan
+                            </ul>
+                        </li>
+                    @endcan
                 </ul>
             </div>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

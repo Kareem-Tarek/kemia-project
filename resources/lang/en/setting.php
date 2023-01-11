@@ -1,0 +1,28 @@
+<?php
+
+return  [
+    'index_forelse_loop_empty_msg_1' => 'There are no settings yet!',
+    'index_forelse_loop_empty_msg_2' => 'Please add settings',
+    'index_forelse_loop_empty_msg_3' => 'and come back again.',
+    'add_setting'                    => 'Add Settings',
+    'setting'                        => 'Settings',
+    'settings'                       => 'Settings',
+    'setting_list'                   => 'Settings List',
+    'edit_setting'                   => 'Edit Settings',
+    'deleted_settings'               => 'Deleted Settings',
+    'title'                          => 'Title',
+    'description'                    => 'Description',
+    'short_description'              => 'Short-description',
+    'empty_deleted_foresle_msg'      => 'There are no settings deleted yet!',
+    'facebook'                       => 'Facebook',
+    'twitter'                        => 'Twitter',
+    'instagram'                      => 'Instagram',
+    'whatsApp'                       => 'WhatsApp',
+    'phone'                          => 'Phone',
+    'phone2'                         => 'Second Phone',
+    'email'                          => 'Email',
+    'user_name'                      => 'User Name',
+    'empty_deleted_foresle_msg'      => 'There are no deleted settings!',
+    'select_user'                    => 'Select User',
+    'forcedelete_warning'            => 'Are you sure that you want to permanently delete all settings for:',
+];

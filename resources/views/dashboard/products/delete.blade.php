@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    {{ __('product.product') }}
+    {{ __('product.deleted_products') }}
 @endsection
 
 {{-- @push('css')
@@ -13,7 +13,7 @@
         @slot('breadcrumb_title')
             <h3>{{ __('product.product') }}</h3>
         @endslot
-        <li class="breadcrumb-item active">{{ __('product.product') }}</li>
+        <li class="breadcrumb-item active">{{ __('product.deleted_products') }}</li>
     @endcomponent
 
     {{-- @if(session()->has('product_created'))
@@ -33,7 +33,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
 
-                            <table class="table-striped display table-bordered @if($all_products->count() == 0) d-none @endif   " id="responsive">
+                            <table class="table-striped display table-bordered @if($all_deleted_products->count() == 0) d-none @endif" id="responsive">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -51,7 +51,7 @@
                                 </thead>
 
                                 <tbody>
-                                    @forelse ($all_products as $product)
+                                    @forelse ($all_deleted_products as $product)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td><img src="{{ $product->image }}" alt="{{ $product->title.'.img' }}" width="100"></td>
@@ -103,21 +103,23 @@
                                             </td>
                                             
                                             <td>
+                                                N/A
                                             </td>
                                             <td>
                                                 <div style="display: flex;">
-                                                    @can('product-edit')
+                                                    @can('product-restore')
                                                         <a class="btn btn-outline-primary-2x" style="margin:0 20px;"
-                                                            href="{{ route('products.edit', $product->id) }}">{{ __('master.edit') }}</a>
+                                                            href="{{ route('products.restore', $product->id) }}">{{ __('master.restore') }}</a>
                                                     @endcan
 
-                                                    @can('product-delete')
-                                                        <form action="{{ route('products.destroy', $product->id) }}" method="post">
+                                                    @can('product-forceDelete')
+                                                        <form action="{{ route('products.forceDelete', $product->id) }}" method="post">
                                                             @csrf
                                                             @method('delete')
                                                             <input style="border-color: #d22d3d;"
                                                                 class="btn btn-outline-danger-2x"
-                                                                value="{{ __('master.delete') }}" type="submit">
+                                                                value="{{ __('master.permanent_delete') }}" 
+                                                                type="submit" onclick=" return confirm('{{__('product.forcedelete_warning') }}\n ({{ $product->title }})')">
 
                                                         </form>
                                                     @endcan
@@ -125,7 +127,7 @@
                                             </td>
                                         </tr>
                                         @empty
-                                            <div class="alert alert-secondary text-center h5">{{ __('product.index_forelse_loop_empty_msg_1') }} <a href="{{ route('products.create') }}" class="text-decoration-underline fw-bold text-dark">{{ __('product.index_forelse_loop_empty_msg_2') }}</a> {{ __('product.index_forelse_loop_empty_msg_3') }}</div>
+                                            <div class="alert alert-secondary text-center h5">{{__('product.empty_deleted_foresle_msg') }}</div>
                                     @endforelse
                                 </tbody>
                             </table>

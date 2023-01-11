@@ -99,6 +99,8 @@ class CategoryController extends Controller
     {
         // $category_old_name = Category::find($id)->name;
         $category            = Category::findOrFail($id);
+        $category->setTranslation('name', 'en', $request->name_en)
+            ->setTranslation('name', 'ar', $request->name_ar);
         $category->status    = $request->status;
         $category->parent_id = $request->parent_id;
         $category->save();

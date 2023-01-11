@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    {{ __('user.user') }}
+    {{ __('user.user_edit') }}
 @endsection
 
 @push('css')

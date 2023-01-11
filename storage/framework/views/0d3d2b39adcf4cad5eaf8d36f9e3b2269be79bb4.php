@@ -46,12 +46,11 @@
                                             <td><?php echo e(ucfirst($user->roles_name)); ?></td>
                                             <td class="text-center">
                                                 <?php if($user->status == "active"): ?>
-                                                    <h6><span class="badge badge-success"><?php echo e(ucfirst($user->status)); ?></span></h6>
+                                                    <h6><span class="badge badge-success"><?php echo e(__('user.active')); ?></span></h6>
                                                 <?php elseif($user->status == "inactive"): ?>
-                                                    <h6><span class="badge badge-info"><?php echo e(ucfirst($user->status)); ?></span></h6>
-                                                
+                                                    <h6><span class="badge badge-info"><?php echo e(__('user.inactive')); ?></span></h6>
                                                 <?php else: ?>
-                                                    <h6><span class="badge badge-danger"><?php echo e(ucfirst($user->status)); ?></span></h6>
+                                                    <h6><span class="badge badge-danger"><?php echo e(__('user.block')); ?></span></h6>
                                                 <?php endif; ?>
                                             </td>
                                             <td>

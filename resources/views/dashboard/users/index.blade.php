@@ -45,12 +45,11 @@
                                             <td>{{ ucfirst($user->roles_name) }}</td>
                                             <td class="text-center">
                                                 @if($user->status == "active")
-                                                    <h6><span class="badge badge-success">{{ ucfirst($user->status) }}</span></h6>
+                                                    <h6><span class="badge badge-success">{{ __('user.active') }}</span></h6>
                                                 @elseif($user->status == "inactive")
-                                                    <h6><span class="badge badge-info">{{ ucfirst($user->status) }}</span></h6>
-                                                {{-- @else($user->status == "block")--}}
+                                                    <h6><span class="badge badge-info">{{ __('user.inactive') }}</span></h6>
                                                 @else
-                                                    <h6><span class="badge badge-danger">{{ ucfirst($user->status) }}</span></h6>
+                                                    <h6><span class="badge badge-danger">{{ __('user.block') }}</span></h6>
                                                 @endif
                                             </td>
                                             <td>

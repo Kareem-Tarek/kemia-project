@@ -1,7 +1,7 @@
 
 
 <?php $__env->startSection('title'); ?>
-    <?php echo e(__('category.category')); ?>
+    <?php echo e(__('category.edit_category')); ?>
 
 <?php $__env->stopSection(); ?>
 
@@ -11,7 +11,7 @@
 <?php $__env->startSection('content'); ?>
     <?php $__env->startComponent('components.breadcrumb'); ?>
         <?php $__env->slot('breadcrumb_title'); ?>
-            <h3><?php echo e(__('category.category')); ?></h3>
+            <h3><?php echo e(__('category.edit_category')); ?></h3>
         <?php $__env->endSlot(); ?>
 
         <li class="breadcrumb-item"><a href="<?php echo e(route('categories.index')); ?>"><?php echo e(__('category.category')); ?></a></li>

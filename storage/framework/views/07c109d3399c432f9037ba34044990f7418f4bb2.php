@@ -104,18 +104,7 @@
                                 </div>
                             </div>
 
-                            <div class="row g-1">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="validationDefault08"><?php echo e(__('master.view')); ?></label>
-                                    <select class="form-select" id="validationDefault08" required="" name="view">
-                                        
-                                            <option value="yes" <?php echo e($user->view == 'yes'? 'selected' : ''); ?>>Yes</option>
-                                            <option value="no" <?php echo e($user->view == 'no'? 'selected' : ''); ?>>No</option>
-                                    </select>
-                                    <div class="valid-feedback"><?php echo e(__('validation.valid_feedback')); ?></div>
-                                    <div class="invalid-feedback"><?php echo e(__('validation.invalid_feedback')); ?></div>
-                                </div>
-                            </div>
+                            
 
                             <div class="row g-1">
                                 <div class="col-md-12 mb-3">

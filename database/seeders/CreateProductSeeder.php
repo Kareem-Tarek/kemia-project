@@ -77,5 +77,6 @@ class CreateProductSeeder extends Seeder
             'category_id'      => 3,    // category_id = 3 (Video Games)
         ]);
 
+
     }
 }

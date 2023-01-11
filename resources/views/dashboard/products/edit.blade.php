@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    {{ __('product.product') }}
+    {{ __('product.edit_product') }}
 @endsection
 
 @push('css')
@@ -10,7 +10,7 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>{{ __('product.product') }}</h3>
+            <h3>{{ __('product.edit_product') }}</h3>
         @endslot
 
         <li class="breadcrumb-item"><a href="{{ route('products.index') }}">{{ __('product.product') }}</a></li>

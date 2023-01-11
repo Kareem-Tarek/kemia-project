@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Role
+    {{ __('role.edit_role') }}
 @endsection
 
 @push('css')

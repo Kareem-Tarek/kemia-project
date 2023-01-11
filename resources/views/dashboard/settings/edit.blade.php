@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    {{ __('setting.setting') }}
+    {{ __('setting.edit_setting') }}
 @endsection
 
 @push('css')
@@ -14,7 +14,7 @@
         @endslot
 
         <li class="breadcrumb-item"><a href="{{ route('settings.index') }}">{{ __('setting.setting') }}</a></li>
-        <li class="breadcrumb-item active"> {{ __('setting.setting') }}</li>
+        <li class="breadcrumb-item active"> {{ __('setting.edit_setting') }}</li>
     @endcomponent
 
 
